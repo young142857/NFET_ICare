@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes"/>
+    <title>404</title>
+    <link rel="stylesheet" href="/css/mgr/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/mgr/reset.css"/>
+    <link rel="stylesheet" href="/css/mgr/common.css"/>
+    <link rel="stylesheet" href="/css/mgr/backstage404.css"/>
+    <script src="/js/mgr/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--顶部导航条-->
+    <div class="navigation  col-lg-12">
+        <!--导航条左部-->
+        <ul class="leftlist">
+            <li class="imgli"><img src="/image/images/trafficstatistics/logo.png"/></li>
+            <li class="navli-first"><a href="javascript:;">流量统计</a></li>
+            <li class="navli-second"><a href="javascript:;">客户资料管理</a></li>
+        </ul>
+        <!--导航条右部-->
+        <ul class="rightlist">
+            <li class="firstli"><div class="name" th:text="${session.staff.staffName}"></div><div class="identity"><a href="/mgr/exitSys">退出</a></div></li>
+            <li><img th:src="@{${session.staff.staffImage}}"/></li>
+            <li class="verticalline"></li>
+        </ul>
+    </div>
+    <!--页面主体-->
+    <div class="main-error">
+        <div class="errorpage">
+            <a class="backbtn" href="javascript:history.back();"></a>
+        </div>
+    </div>
+    <!--页脚部分-->
+    <div class="footer">
+        <span>Copyright&copy;2017南京富士通电子信息科技股份有限公司</span>
+    </div>
+</div>
+</body>
+</html>

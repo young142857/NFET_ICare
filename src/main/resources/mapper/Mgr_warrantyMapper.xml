@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.WarrantyMapper">	
+	<resultMap type="com.nfet.icare.pojo.Mgr_Warranty" id="Mgr_WarrantyResultMap">
+		<id column="uid" property="uid"/>
+		<result column="warranty_ext_no" property="warrantyNo"/>
+		<result column="pay_amt" property="payAmt"/>
+		<result column="pay_msg" property="payMsg"/>
+		<result column="pay_status" property="payStatus"/>
+		<result column="warranty_from" property="warrantyFrom"/>
+		<result column="warranty_to" property="warrantyTo"/>
+		<result column="visit_from" property="visitFrom"/>
+		<result column="visit_to" property="visitTo"/>
+		<result column="order_time" property="orderTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+		<association column="device_no" property="deviceNo" javaType="com.nfet.icare.pojo.DeviceInfo">
+			<id column="uid" property="uid"/>
+			<result column="device_no" property="deviceNo"/>
+			<result column="name" property="name"/>
+			<result column="type" property="type"/>
+			<result column="model" property="model"/>
+			<result column="image" property="image"/>
+			<result column="mfg_date" property="mfgDate"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="warranty_pkg_no" property="warrantyPkgNo" javaType="com.nfet.icare.pojo.WarrantyPkg">
+			<id column="uid" property="uid"/>
+			<result column="warranty_pkg_no" property="warrantyPkgNo"/>
+			<result column="warranty_pkg_period" property="warrantyPkgPeriod"/>
+			<result column="warranty_pkg_content" property="warrantyPkgContent"/>
+			<result column="warranty_pkg_price" property="warrantyPkgPrice"/>
+			<result column="warranty_pkg_image" property="warrantyPkgImage"/>
+			<result column="warranty_type" property="warrantyType"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="warranty_visit_no" property="warrantyVisitNo" javaType="com.nfet.icare.pojo.WarrantyPkg">
+			<id column="uid" property="uid"/>
+			<result column="warranty_pkg_no" property="warrantyPkgNo"/>
+			<result column="warranty_pkg_period" property="warrantyPkgPeriod"/>
+			<result column="warranty_pkg_content" property="warrantyPkgContent"/>
+			<result column="warranty_pkg_price" property="warrantyPkgPrice"/>
+			<result column="warranty_pkg_image" property="warrantyPkgImage"/>
+			<result column="warranty_type" property="warrantyType"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="user_no" property="userNo" javaType="com.nfet.icare.pojo.User">
+			<id column="uid" property="uid"/>
+			<result column="user_no" property="userNo"/>
+			<result column="name" property="name"/>
+			<result column="phone" property="phone"/>
+			<result column="company_id" property="companyId"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+	</resultMap>
+	
+	<!-- 延保统计 -->
+	<sql id="warrantyOrder">
+		order_time,pay_amt,warranty_pkg_content
+	</sql>
+	
+	<!-- 延保总收入 -->
+	<sql id="sum">
+		sum(pay_amt)
+	</sql>
+	
+	<!-- 某套餐收入 -->
+	<sql id="payAmt">
+		sum(pay_amt)
+	</sql>
+	
+	<!-- 延保上门套餐数量 -->
+	<sql id="wvCount">
+		warranty_pkg_content name,count(warranty_pkg_content) value
+	</sql>
+	
+	<!-- 延保记录查询 -->
+	<sql id="WarrantyRecord">
+		dwe.warranty_ext_no,dwe.order_time,warranty_pkg_content,pay_amt,dwe.visit_from,
+		dwe.warranty_to,dwe.warranty_from,cwp.warranty_pkg_period,dwe.visit_to
+	</sql>
+	
+	<!-- 客户延保上门订单 -->
+	<sql id="allWarranty">
+		dwe.warranty_ext_no,dwe.order_time,device_no,du.user_no,du.name,du.phone,
+		du.company_id,warranty_pkg_content,pay_amt,dwe.visit_from,dwe.warranty_to,
+		dwe.warranty_from,cwp.warranty_pkg_period,dwe.visit_to
+	</sql>
+	
+	<!-- 延保套餐数量 -->
+	<select id="warrantyCount" resultType="com.nfet.icare.pojo.WarrantyCount">
+		SELECT
+		<include refid="wvCount" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_pkg_no = cwp.warranty_pkg_no
+		<where>
+			dwe.warranty_pkg_no != '25'
+			and pay_status = '0'
+			and dwe.warranty_visit_no = ''
+		</where>
+		GROUP BY warranty_pkg_content
+		ORDER BY count(warranty_pkg_content) desc
+	</select>
+	
+	<!-- 上门套餐数量 -->
+	<select id="visitCount" resultType="com.nfet.icare.pojo.WarrantyCount">
+		SELECT
+		<include refid="wvCount" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_visit_no = cwp.warranty_pkg_no
+		<where>
+			dwe.warranty_pkg_no != '25'
+			and pay_status = '0'
+			and dwe.warranty_pkg_no = ''
+		</where>		
+		GROUP BY warranty_pkg_content
+		ORDER BY count(warranty_pkg_content) desc
+	</select>
+	
+	<!-- 延保总收入 -->
+	<select id="sumIncome" resultType="java.lang.String">
+		SELECT
+		<include refid="sum" />
+		FROM data_warranty_extend
+		<where>
+			pay_status = '0'
+		</where>		
+	</select>
+	
+	<!-- 所有延保订单 -->
+	<select id="warrantyOrder" resultMap="Mgr_WarrantyResultMap">
+		SELECT
+		<include refid="warrantyOrder" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_pkg_no = cwp.warranty_pkg_no
+		<where>
+			dwe.warranty_pkg_no != '25'
+			AND pay_status = '0'
+			AND dwe.warranty_visit_no = ''
+		</where>
+	</select>
+	
+	<!-- 所有上门订单 -->
+	<select id="visitOrder" resultMap="Mgr_WarrantyResultMap">
+		SELECT 
+		<include refid="warrantyOrder" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_visit_no = cwp.warranty_pkg_no
+		<where>
+			dwe.warranty_pkg_no != '25'
+			AND pay_status = '0'
+			AND dwe.warranty_pkg_no = ''
+		</where>		
+	</select>
+	
+	<!-- 某延保套餐收入 -->
+	<select id="warrantyPayAmts" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT
+		<include refid="payAmt" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_pkg_no = cwp.warranty_pkg_no
+		<where>
+			cwp.warranty_pkg_content = #{typeName}
+			AND pay_status = '0' 
+		</where>
+	</select>
+	
+	<!-- 某上门套餐收入 -->
+	<select id="visitPayAmts" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT
+		<include refid="payAmt" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_visit_no = cwp.warranty_pkg_no
+		<where>
+			cwp.warranty_pkg_content = #{typeName}
+			AND pay_status = '0'
+		</where>
+	</select>
+	
+	<!-- 根据机器编码查询所有延保记录 -->
+	<select id="mgrWarrantyRecord" parameterType="java.lang.String" resultMap="Mgr_WarrantyResultMap">
+		SELECT 
+		<include refid="WarrantyRecord" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN data_user du
+		ON dwe.user_no = du.user_no
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_pkg_no = cwp.warranty_pkg_no
+		where device_no = #{deviceNo} 
+		and dwe.warranty_pkg_no != ''
+		and pay_status = 0	
+		order by dwe.last_modify_time desc	
+	</select>
+	
+	<!-- 根据机器编码查询所有上门卡记录 -->
+	<select id="mgrVisitRecord" parameterType="java.lang.String" resultMap="Mgr_WarrantyResultMap">
+		SELECT 
+		<include refid="WarrantyRecord" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN data_user du
+		ON dwe.user_no = du.user_no
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_visit_no = cwp.warranty_pkg_no
+		where device_no = #{deviceNo} 
+		and dwe.warranty_visit_no != ''
+		and pay_status = 0		
+		order by dwe.last_modify_time desc
+	</select>
+	
+	<!-- 客户延保订单 -->
+	<select id="allWarrantyOrder" resultMap="Mgr_WarrantyResultMap">
+		SELECT
+		<include refid="allWarranty" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_pkg_no = cwp.warranty_pkg_no
+		LEFT JOIN data_user du
+		ON dwe.user_no = du.user_no
+		<where>
+			pay_status = '0'
+			AND dwe.warranty_pkg_no != ''
+		</where>
+		ORDER BY dwe.order_time	desc
+	</select>
+	
+	<!-- 客户上门订单 -->
+	<select id="allVisitOrder" resultMap="Mgr_WarrantyResultMap">
+		SELECT 
+		<include refid="allWarranty" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_warranty_pkg cwp
+		ON dwe.warranty_visit_no = cwp.warranty_pkg_no
+		LEFT JOIN data_user du
+		ON dwe.user_no = du.user_no
+		<where>
+			pay_status = '0'
+			AND dwe.warranty_pkg_no = ''
+		</where>	
+		ORDER BY dwe.order_time	desc
+	</select>
+</mapper>

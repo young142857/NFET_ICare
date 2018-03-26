@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.WxUserMapper">
+	<resultMap type="com.nfet.icare.pojo.WxUser" id="WxUserResultMap">
+		<id column="uid" property="uid"/>
+		<result column="open_id" property="openId"/>
+		<result column="phone" property="phone"/>
+		<result column="create_time" property="createTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+	</resultMap>
+	
+	<!-- 查询微信用户 -->
+	<sql id="wxUser">
+		open_id,phone
+	</sql>
+	
+	<!-- 保存微信用户数据 -->
+	<insert id="insertWxUser" parameterType="com.nfet.icare.pojo.WxUser">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        
+		INSERT INTO data_wx_user
+		(uid,open_id,phone,create_time,last_modify_time) 
+		VALUES
+		(#{uid,jdbcType=VARCHAR},#{wxUser.openId},#{wxUser.phone},
+		#{wxUser.createTime},#{wxUser.lastModifyTime})
+	</insert>
+	
+	<!-- 查询微信用户 -->
+	<select id="queryWxUser" parameterType="java.lang.String" resultMap="WxUserResultMap">
+		SELECT 
+		<include refid="wxUser" />
+		FROM data_wx_user
+		<where>
+			open_id = #{openId}
+		</where>
+	</select>
+</mapper>

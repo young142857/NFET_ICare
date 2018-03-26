@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>在线报修</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/onlinefix.css"/>
+    <!-- <link th:href="@{../bootstrap/css/bootstrap.css}" rel="stylesheet" /> -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <span class="header_sp1">扫描/输入设备的条形码</span>
+        <!-- <span class="header_sp2">支持2014年至今的所有型号输入<br/>仅支持DPK750和DPK1680系列设备的扫描</span> -->
+    </div>
+    <div class="main">
+        <div class="scan" id="scan_wx">
+            <div class="item1">
+                <img src="/image/scan/2.png" style="width:0.96rem; height:0.96rem;display: block"/>
+            </div>
+            <div class="item2">
+                <span class="item2_sp1" style="font-size: 0.36rem; color: #404040;">扫描</span>
+                <span class="item2_sp2" style="font-size: 0.28rem;color: #999999;">扫描设备上的条形码</span>
+            </div>
+            <div class="item3"><img src="/image/scan/3.png" style="width: 0.16rem;height:0.25rem;"/></div>
+        </div>
+        <div class="import" id="fix">
+            <div class="item1">
+                <img src="/image/scan/1.png" style="width:0.96rem; height:0.96rem;display: block"/>
+            </div>
+            <div class="item2">
+                <span class="item2_sp1" style="font-size: 0.36rem; color: #404040;">输入</span>
+                <span class="item2_sp2" style="font-size: 0.28rem;color: #999999;">输入设备的设备编码</span>
+            </div>
+            <div class="item3"><img src="/image/scan/3.png" style="width: 0.16rem;height:0.25rem;"/></div>
+        </div>
+    </div>
+</div>
+	<!-- <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script> -->
+	<script type="text/javascript" th:src="@{../bootstrap/js/bootstrap.min.js}"></script>	
+	<script th:inline="javascript">
+		var nonceStr = [[${nonceStr}]];
+		var timestamp = [[${timestamp}]];
+		var signature = [[${signature}]];
+		
+/* 		var pay_nonceStr = [[${pay_nonceStr}]];
+		var pay_timestamp = [[${pay_timestamp}]];
+		var prepay_id = [[${prepay_id}]];
+		var paySign = [[${paySign}]]; */
+		
+		wx.config({
+		      debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		      appId: "wx58524049dcd12d43", // 必填，公众号的唯一标识
+		      timestamp: timestamp, // 必填，生成签名的时间戳
+		      nonceStr: nonceStr, // 必填，生成签名的随机串
+		      signature: signature,// 必填，签名，见附录1
+		      jsApiList: ['scanQRCode'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		  });
+	</script>
+	<script src="/js/inputfix.js"></script>
+</body>
+</html>

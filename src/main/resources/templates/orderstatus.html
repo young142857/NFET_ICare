@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>报修进度</title>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/orderstatus.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+<!--页面顶部-->
+    <div class="header">
+        <div class="headbox">
+            <div class="items">
+			<!--顶部产品图片-->
+                <div class="imgbox">
+                    <img th:src="@{${device.deviceNo.image}+'_03.png'}" style="width:1.74rem;height: 1.74rem;"/>
+                </div>
+				<!--顶部产品信息-->
+                <div class="now">
+                    <span class="nowsp1">当前状态：</span>
+                    <span th:if="${status} == 1" class="nowsp2">报修成功</span>
+                    <span th:if="${status} == 2" class="nowsp2">客服确认</span>
+                    <span th:if="${status} == 3" class="nowsp2">维修中</span>
+                    <span th:if="${status} == 4" class="nowsp2">维修完成</span>
+					<div class="ordercode">订单编号：<span id="fixId" th:text="${fixId}" class="nowsp3"></span></div>
+                    <div class="ordercode">设备编码：<span th:text="${deviceNo}" class="nowsp3"></span></div>
+                </div> 
+            </div>
+            <div class="imgarrow">
+                <!-- <a href="myorder.html"><img src="/image/orderstatus/3.png" style="width: 1.26rem;height: 0.25rem"/></a> -->
+            </div>
+        </div>
+		<!--报修进度条部分-->
+        <div class="slider">
+		<!--报修进度条上部文字-->
+            <div class="slibox">
+                <span class="slidersp1">报修成功</span>
+                <span class="slidersp2">维修完成</span>
+            </div>
+			<!--报修进度条部分-->
+            <div class="imgslider">
+                <div class="ws">
+                    <img class="bull" src="/image/orderstatus/4.png"/>
+                    <img class="red" src="/image/orderstatus/6.png" />
+                    <img class="bull" src="/image/orderstatus/4.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--页面主体-->
+        <div class="mainbox">
+            <!--左部时间列表-->
+                <ul class="date">
+                    <li class="dateli">
+                        <span id="time_1" class="datesptime_one"></span>
+                        <span id="date_1" class="datespdate_one"></span>
+                    </li>
+                    <li class="dateli">
+                        <span id="time_2" class="datesptime_two"></span>
+                        <span id="date_2" class="datespdate_two"></span>
+                    </li>
+                    <li class="dateli">
+                        <span id="time_3" class="datesptime_three"></span>
+                        <span id="date_3" class="datespdate_three"></span>
+                    </li>
+                    <li class="dateli">
+                        <span id="time_4" class="datesptime_four"></span>
+                        <span id="date_4" class="datespdate_four"></span>
+                    </li>
+                </ul>
+				<!--中间红色圆点-->
+            <div class="middle">
+                    <img class="note1" src="/image/orderstatus/1.png"/>
+                    <img class="note2" src="/image/orderstatus/2.png"/>
+                    <img class="note3" src="/image/orderstatus/2.png"/>
+                    <img class="note4" src="/image/orderstatus/2.png"/>
+            </div>
+                <ul class="data">
+                    <li class="datali">
+                        <div class="status_one">
+                            <span>报修成功，请耐心等待!</span>
+                            <span>客服人员会来电确实您的报修信息</span>
+                        </div>
+                    </li>
+                    <li class="datali">
+                        <div class="status_two">
+                            <span>客服已确认!</span>
+                            <span>维修人员会尽快处理，请耐心等待</span>
+                        </div>
+                    </li>
+                    <li class="datali">
+                        <div class="status_three">
+                            <span>维修中，请耐心等待!</span>
+                            <span>正在火速维修中，给个好评鼓励下吧</span>
+                        </div>
+                    </li>
+                    <li class="datali">
+                        <div class="status_four">
+                            <span>维修完成!</span>
+                            <span>在报修订单页面可以给出你的评价哦</span>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/orderstatus.js"></script>
+</body>
+</html>

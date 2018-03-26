@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>评价</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/estimate.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="headerbox">
+            <div class="goods">
+                <img th:src="@{${device.deviceNo.image}+'_06.png'}" style="width: 1.24rem; height: 1.22rem"/>
+            </div>
+            <div class="estimate">
+                <p>评价设备</p>
+                <!--订单编号-->
+                <span class="device" th:text="${fixNo}"></span>
+            </div>
+            <div class="starbox">
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+            </div>
+            <div class="word"></div>
+        </div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea textarea1" placeholder="请填写您对设备的评价" rows="3"></textarea>
+                    <div class="weui-textarea-counter textarea">40字以内</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="service">
+            <p class="servicep">客服人员态度</p>
+            <div class="starbox2">
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+            </div>
+            <div class="word2"></div>
+        </div>
+        <div class="service">
+            <p class="servicep">维修师傅态度</p>
+            <div class="starbox3">
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+                <span class="star bg1"></span>
+            </div>
+            <div class="word3"></div>
+        </div>
+        <div class="weui-cells">
+            <div class="weui-cell weui-cell_switch">
+                <div class="weui-cell__bd bdbox">匿名评价</div>
+                <div class="weui-cell__ft switch">
+                    <input class="weui-switch" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="btn">
+            <a href="#" class="weui-btn weui-btn_warn">提交</a>
+        </div>
+    </div>
+	  <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/estimate.js"></script>
+</body>
+</html>

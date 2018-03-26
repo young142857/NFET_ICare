@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>注册会员</title>
+    <link rel="stylesheet" href="/css/weui.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/zhuce1.css" />
+    <script src="/js/jquery-1.11.3.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--logo-->
+    <div class="logobox">
+        <img src="/image/注册会员/公司logo.png" style="width: 3.36rem;height: 1.7rem;" />
+    </div>
+<!-- 用户信息输入框 -->
+    <div class="main">
+       <div class="weui-cells">
+    <!--姓名输入框-->
+          <div class="weui-cell ptbox">
+             <div class="weui-cell_hd">
+              <img src="/image/注册会员/1.png" alt="" class="weui-label ptimg" />
+              </div>
+             <div class="weui_cell_bd">
+              <input class="weui-input" type="text"  placeholder="请输入您的真实姓名" id="username" />
+             </div>
+         </div>
+     <!--公司输入框-->
+          <div class="weui-cell ptbox">
+          <div class="weui-cell_hd">
+              <img src="/image/注册会员/2.png" alt="" class="weui-label ptimg" />
+          </div>
+          <div class="weui_cell_bd">
+              <input class="weui-input" type="text"  placeholder="请输入您所在的公司" id="company" />
+          </div>
+      </div>
+     <!--电话输入框-->
+          <div class="weui-cell weui-cell_vcode ptbox">
+          <div class="weui-cell_hd">
+              <img src="/image/注册会员/3.png" alt="" class="weui-label ptimg" />
+          </div>
+          <div class="weui_cell_bd">
+              <input class="weui-input vcodept" type="text"  placeholder="请输入您的手机号 " id="phonenum"
+              maxlength="11" onchange="check()" />
+          </div>
+          <!--获取验证码-->
+          <div class="weui-cell__ft vcodeptbox">
+              <button id="btn1" class="weui-vcode-btn vcodebt">获取验证码</button>
+          </div>
+      </div>
+      <!--验证码输入框-->
+          <div class="weui-cell ptbox">
+          <div class="weui-cell_hd">
+              <img src="/image/注册会员/4.png" alt="" class="weui-label ptimg" />
+          </div>
+          <div class="weui_cell_bd">
+              <input class="weui-input" type="text"  placeholder="请输入您的验证码" id="vcode" />
+          </div>
+      </div>
+        </div>
+    </div>
+    <!--注册按钮-->
+    <div class="weui-cells zhucebt">
+      <a href="../page/mydatazhuce" class="weui-btn weui-btn_warn">注册</a>
+    </div>
+    <!--toast-->
+    <!--<div class="toast" id="toast">-->
+        <!--<p>请您输入<br>正确的手机号码</p>-->
+    <!--</div>-->
+</div>
+<script src="/js/registerPage.js"></script>
+</body>
+</html>

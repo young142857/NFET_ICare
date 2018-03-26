@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.UserMapper">
+	<resultMap type="com.nfet.icare.pojo.User" id="UserResultMap">
+		<id column="uid" property="uid"/>
+		<result column="user_no" property="userNo"/>
+		<result column="name" property="name"/>
+		<result column="phone" property="phone"/>
+		<result column="company_id" property="companyId"/>
+		<result column="wx_name" property="wxName"/>
+		<result column="wx_img" property="wxImg"/>
+		<result column="score" property="score"/>
+		<result column="give_score" property="giveScore"/>
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+	</resultMap> 
+	
+	<resultMap type="com.nfet.icare.pojo.CacheInfo" id="AllPhonesMap">
+		<result column="phone" property="key"/>
+		<result column="user_no" property="value"/>
+	</resultMap> 
+	
+	<sql id="all_phones">
+		user_no,phone
+	</sql>
+	
+	<sql id="user_phone">
+		uid,user_no,name,last_modify_time,phone,company_id,score,give_score
+	</sql>
+	
+	<!-- 查找手机号是否已注册 -->
+	<select id="checkUserPhone" parameterType="java.lang.String" resultMap="UserResultMap">
+		SELECT 
+		<include refid="user_phone" />
+		FROM data_user where phone = #{phone}
+	</select>
+	
+	<!-- 用户初始注册 -->
+	<insert id="initReg" parameterType="com.nfet.icare.pojo.User">
+        <selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>     
+           
+		INSERT INTO
+		data_user(uid,user_no,name,phone,company_id,wx_name,wx_img,create_time,last_modify_time)
+		VALUES
+		(#{uid,jdbcType=VARCHAR}, #{user.userNo},#{user.name},#{user.phone},#{user.companyId},
+		#{user.wxName},#{user.wxImg},#{user.createTime},#{user.lastModifyTime})
+	</insert>
+	
+	<!-- 完善用户信息 -->
+	<update id="updateUser" parameterType="com.nfet.icare.pojo.User">
+		UPDATE data_user
+		<set>
+			<if test="user.name != null and user.name != ''">
+				name = #{user.name},
+			</if>
+			<if test="user.score != null and user.score != ''">
+				score = #{user.score},
+			</if>
+			<if test="user.lastModifyTime != null">
+				last_modify_time = #{user.lastModifyTime},
+			</if>
+		</set>
+		<where>
+			user_no = #{user.userNo}
+		</where>		
+	</update>
+	
+	<!-- 注册赠送积分 -->
+	<update id="giveScore" parameterType="java.util.Map">
+		UPDATE data_user
+		<set>
+			<if test="map.giveScore != null and map.giveScore != ''">
+				give_score = #{map.giveScore},
+			</if>
+			<if test="map.score != null and map.score != ''">
+				score = #{map.score},
+			</if>
+		</set>
+		<where>
+			user_no = #{map.userNo}
+		</where>
+	</update>
+	
+	
+	<!-- 获取所有手机号 -->
+	<select id="getAllPhones" resultMap="AllPhonesMap">
+		SELECT 
+		<include refid="all_phones" />
+		FROM data_user 
+	</select>
+</mapper>

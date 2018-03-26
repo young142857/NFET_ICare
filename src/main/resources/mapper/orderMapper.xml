@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.OrderMapper">
+	<resultMap type="com.nfet.icare.pojo.Fix" id="FixResultMap">
+		<id column="uid" property="uid"/>
+		<result column="fix_id" property="fixId"/>
+		<result column="user_no" property="userNo"/>
+		<result column="user_phone" property="userPhone"/>
+		<result column="company_name" property="companyName"/>
+		<result column="company_phone" property="companyPhone"/>
+		<result column="company_industry" property="companyIndustry"/>
+		<result column="fix_desc" property="fixDesc"/>
+		<result column="fix_pattern" property="fixPattern"/>		
+		<result column="address" property="address"/>
+		<result column="fix_schedule" property="fixSchedule"/>
+		<result column="fault_name" property="faultName"/>
+		<result column="order_time" property="orderTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="accept_person_name" property="acceptPersonName"/>
+		<result column="accept_dep_name" property="acceptDepName"/>
+		<result column="accept_dep_phone" property="acceptDepPhone"/>
+		<result column="accept_content" property="acceptContent"/>
+		<result column="accept_time" property="acceptTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="send_person_name" property="sendPersonName"/>
+		<result column="send_dep_name" property="sendDepName"/>
+		<result column="send_dep_phone" property="sendDepPhone"/>
+		<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+		<association column="device_no" property="deviceNo" javaType="com.nfet.icare.pojo.DeviceInfo">
+			<id column="uid" property="uid"/>
+			<result column="device_no" property="deviceNo"/>
+			<result column="name" property="name"/>
+			<result column="type" property="type"/>
+			<result column="model" property="model"/>
+			<result column="image" property="image"/>
+			<result column="mfg_date" property="mfgDate"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>	
+		<association column="province_id" property="province" javaType="com.nfet.icare.pojo.Province">
+			<id column="uid" property="uid"/>
+			<result column="provice_id" property="provinceId"/>
+			<result column="province_name" property="provinceName"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="city_id" property="city" javaType="com.nfet.icare.pojo.City">
+			<id column="uid" property="uid"/>
+			<result column="city_id" property="cityId"/>
+			<result column="city_name" property="cityName"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="area_id" property="area" javaType="com.nfet.icare.pojo.Area">
+			<id column="uid" property="uid"/>
+			<result column="area_id" property="areaId"/>
+			<result column="area_name" property="areaName"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>	
+	</resultMap>
+	
+	<resultMap type="com.nfet.icare.pojo.Warranty" id="WarrantyResultMap">
+		<id column="uid" property="uid"/>
+		<result column="warranty_ext_no" property="warrantyNo"/>
+		<result column="pay_amt" property="payAmt"/>
+		<result column="pay_msg" property="payMsg"/>
+		<result column="pay_status" property="payStatus"/>
+		<result column="warranty_from" property="warrantyFrom"/>
+		<result column="warranty_to" property="warrantyTo"/>
+		<result column="visit_from" property="visitFrom"/>
+		<result column="visit_to" property="visitTo"/>
+		<result column="order_time" property="orderTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+		<association column="device_no" property="deviceNo" javaType="com.nfet.icare.pojo.DeviceInfo">
+			<id column="uid" property="uid"/>
+			<result column="device_no" property="deviceNo"/>
+			<result column="name" property="name"/>
+			<result column="type" property="type"/>
+			<result column="model" property="model"/>
+			<result column="image" property="image"/>
+			<result column="mfg_date" property="mfgDate"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="warranty_pkg_no" property="warrantyPkgNo" javaType="com.nfet.icare.pojo.WarrantyPkg">
+			<id column="uid" property="uid"/>
+			<result column="warranty_pkg_no" property="warrantyPkgNo"/>
+			<result column="warranty_pkg_period" property="warrantyPkgPeriod"/>
+			<result column="warranty_pkg_content" property="warrantyPkgContent"/>
+			<result column="warranty_pkg_price" property="warrantyPkgPrice"/>
+			<result column="warranty_pkg_image" property="warrantyPkgImage"/>
+			<result column="warranty_type" property="warrantyType"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="warranty_visit_no" property="warrantyVisitNo" javaType="com.nfet.icare.pojo.WarrantyPkg">
+			<id column="uid" property="uid"/>
+			<result column="warranty_pkg_no" property="warrantyPkgNo"/>
+			<result column="warranty_pkg_period" property="warrantyPkgPeriod"/>
+			<result column="warranty_pkg_content" property="warrantyPkgContent"/>
+			<result column="warranty_pkg_price" property="warrantyPkgPrice"/>
+			<result column="warranty_pkg_image" property="warrantyPkgImage"/>
+			<result column="warranty_type" property="warrantyType"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="user_no" property="userNo" javaType="com.nfet.icare.pojo.User">
+			<id column="uid" property="uid"/>
+			<result column="user_no" property="userNo"/>
+			<result column="name" property="name"/>
+			<result column="phone" property="phone"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+	</resultMap>
+	
+	<resultMap type="com.nfet.icare.pojo.WarrantyPkg" id="WarrantyPkgResultMap">
+		<id column="uid" property="uid"/>
+		<result column="warranty_pkg_no" property="warrantyPkgNo"/>
+		<result column="warranty_pkg_period" property="warrantyPkgPeriod"/>
+		<result column="warranty_pkg_content" property="warrantyPkgContent"/>
+		<result column="warranty_pkg_price" property="warrantyPkgPrice"/>
+		<result column="warranty_pkg_image" property="warrantyPkgImage"/>
+		<result column="warranty_type" property="warrantyType"/>
+		<result column="create_time" property="createTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+	</resultMap> 	
+	
+	<!-- 报修列表查询内容 -->
+	<sql id="fixList">
+		conf_device_info.model,conf_device_info.type,fix_id,conf_device_info.device_no,fix_schedule,
+		order_time,fault_name,fix_pattern,province_name,city_name,area_name,address,conf_device_info.image
+	</sql>
+	
+	<!-- 延保列表查询内容 -->
+	<sql id="warrantyList">
+		conf_device_info.model,conf_device_info.type,conf_device_info.device_no,
+		data_warranty_extend.warranty_pkg_no,data_warranty_extend.warranty_visit_no,
+		warranty_pkg_period,warranty_pkg_price,pay_amt,pay_status,data_user.name,
+		data_user.phone,warranty_from,warranty_to,warranty_ext_no,order_time,
+		data_warranty_extend.user_no,conf_device_info.image
+	</sql>
+	
+	<sql id="warrantyDet">
+		cdi.model,cdi.image,cdi.type,cdi.device_no,du.name,pay_amt,warranty_ext_no,order_time,
+		warranty_from,warranty_to,visit_from,visit_to,warranty_pkg_no,warranty_visit_no
+	</sql>
+	
+	<sql id="contentAndPeriod">
+		warranty_pkg_content,warranty_pkg_period,warranty_type,conf_warranty_pkg.warranty_pkg_no
+	</sql>
+	
+	<!-- 报修列表 -->
+	<select id="fixList" parameterType="java.lang.String" resultMap="FixResultMap">
+		SELECT
+		<include refid="fixList" />
+		FROM data_fix
+		LEFT JOIN conf_device_info
+		ON conf_device_info.device_no = data_fix.device_no
+		LEFT JOIN conf_province
+		ON data_fix.province_id = conf_province.province_id
+		LEFT JOIN conf_city
+		ON data_fix.city_id = conf_city.city_id
+		LEFT JOIN conf_area
+		ON data_fix.area_id = conf_area.area_id
+		WHERE user_no = #{userNo}
+		ORDER BY order_time desc
+	</select>
+	
+	<!-- 报修详情 -->
+	<select id="fixDetail" parameterType="java.lang.String" resultMap="FixResultMap">
+		SELECT
+		<include refid="fixList" />
+		FROM data_fix
+		LEFT JOIN conf_device_info
+		ON data_fix.device_no = conf_device_info.device_no
+		LEFT JOIN conf_province
+		ON data_fix.province_id = conf_province.province_id
+		LEFT JOIN conf_city
+		ON data_fix.city_id = conf_city.city_id
+		LEFT JOIN conf_area
+		ON data_fix.area_id = conf_area.area_id
+		WHERE fix_id = #{fixId}
+	</select>
+	
+	<!-- 延保列表 -->
+	<select id="warrantyList" parameterType="java.lang.String" resultMap="WarrantyResultMap">
+		SELECT
+		<include refid="warrantyList" />
+		FROM data_warranty_extend 
+		LEFT JOIN conf_device_info
+		ON data_warranty_extend.device_no = conf_device_info.device_no
+		LEFT JOIN conf_warranty_pkg
+		ON data_warranty_extend.warranty_pkg_no  = conf_warranty_pkg.warranty_pkg_no
+		LEFT JOIN data_user 
+		ON data_warranty_extend.user_no = data_user.user_no
+		WHERE data_warranty_extend.user_no = #{userNo}	
+		ORDER BY data_warranty_extend.last_modify_time desc	
+	</select>
+	
+	<!-- 延保套餐内容  -->
+	<select id="warrantyPkg" parameterType="java.lang.String" resultMap="WarrantyPkgResultMap">
+		SELECT
+		<include refid="contentAndPeriod" />
+		FROM data_warranty_extend 
+		LEFT JOIN conf_warranty_pkg
+		ON data_warranty_extend.warranty_pkg_no  = conf_warranty_pkg.warranty_pkg_no
+		<where>
+			warranty_ext_no = #{warrantyNo}
+		</where>	
+	</select>	
+	
+	<!-- 上门服务卡内容  -->
+	<select id="warrantyVisit" parameterType="java.lang.String" resultMap="WarrantyPkgResultMap">
+		SELECT
+		<include refid="contentAndPeriod" />
+		FROM data_warranty_extend 
+		LEFT JOIN conf_warranty_pkg
+		ON data_warranty_extend.warranty_visit_no  = conf_warranty_pkg.warranty_pkg_no
+		<where>
+			warranty_ext_no = #{warrantyNo}
+		</where>	
+	</select>
+	
+	<!-- 延保详情 -->
+	<select id="warrantyDetail" parameterType="java.lang.String" resultMap="WarrantyResultMap">
+		SELECT
+		<include refid="warrantyDet" />
+		FROM data_warranty_extend dwe
+		LEFT JOIN conf_device_info cdi
+		ON dwe.device_no = cdi.device_no
+		LEFT JOIN data_user du
+		ON dwe.user_no = du.user_no
+		WHERE warranty_ext_no = #{warrantyNo}
+	</select>
+</mapper>

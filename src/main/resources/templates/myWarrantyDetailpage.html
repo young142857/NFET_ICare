@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>保修卡详情</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/myWarrantyDetailpage.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!--页面顶部导航条-->
+        <div class="top">
+            <div class="toplogo"><img src="/image/myWarrantyDetailpage/LOGO.png"/></div>
+            <div class="topmain"><h3 th:text="${ecardMap.nameType}"></h3></div>
+        </div>
+    </div>
+    <div class="main">
+          <!--保修声明-->
+		<div class="declaration">
+        	<img src="/image/myWarrantyDetailpage/4.png" style="width: 1.05rem;height: 0.19rem;"/>
+		</div>
+        <!--红色圆和延保按钮-->
+          <div class="round">
+             <p class="round1">剩余天数</p>
+             <p class="round2" th:text="${ecardMap.leftDate}"></p>
+         </div>
+          <!--延保按钮-->
+          <div class="btnbox">
+              <a href="#" class="weui-btn weui-btn_plain-primary midbtn">继续延保</a>
+          </div>
+          <!--条形码部-->
+          <div class="barcodebox">
+              <ul class="barcodelist">
+                  <li><span>保修卡号：</span><span class="spft" th:text="${ecardMap.ecardNo}"></span></li>
+                  <li><span>设备编码：</span><span class="spft" id="device" th:text="${ecardMap.deviceNo}"></span></li>
+                  <li><span>保修开始日期：</span><span class="spft" th:text="${ecardMap.warrantFrom}"></span></li>
+                  <li><span>保修截止日期：</span><span class="spft" th:text="${ecardMap.warrantTo}"></span></li>
+              </ul>
+              <div class="barcode">
+			    <img src="/image/myWarrantyDetailpage/3.png" style="width: 6.7rem;height: 0.79rem;"/>
+			    <div class="codebox" th:text="|NFET${ecardMap.ecardNum}|"></div>
+			  </div>
+          </div>
+       </div>
+    <div class="middle">
+        <!--延保记录-->
+        <div class="weui-cells">
+            <div class="weui-cell">
+               <div class="weui-cell__bd">
+                  <p class="cellp">延保记录</p>
+                </div>
+            </div>
+        </div>
+        <div class="yanbao" th:each="record:${warrantyRecord}">
+            <div class="weui-panel" th:if="${record.warrantyPkgNo} != null">
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_text">
+                        <div class="weui-media-box__title divptrt">
+                        	<span th:text="${record.warrantyPkgNo.warrantyPkgContent}"></span>
+                        	<span class="ptrt" th:if="${record.payAmt} !=0" th:text="|${record.payAmt}元|"></span>
+                        	<span class="ptrt" th:if="${record.payAmt} ==0" th:text="免费"></span></div>
+                        <p class="weui-media-box__desc descp" th:if="${record.warrantyPkgNo.warrantyPkgPeriod} != 1080" th:text="|延保期限：${record.warrantyPkgNo.warrantyPkgPeriod}个月|"></p>
+                        <p class="weui-media-box__desc descp" th:if="${record.warrantyPkgNo.warrantyPkgPeriod} == 1080">延保期限：3个月</p>
+                        <p class="weui-media-box__desc date"><span th:text="${record.warrantyFrom}"></span>--<span th:text="${record.warrantyTo}"></span></p>
+                        <ul class="weui-media-box__info yanbaoul">
+                            <li class="weui-media-box__info__meta" th:text="${record.warrantyNo}"></li>
+                            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra" th:text="${record.orderTimeStr}"></li>
+                            <li class="weui-media-box__info__meta name" th:text="${record.userNo.name}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="yanbao" th:each="record:${visitRecord}">
+            <div class="weui-panel" th:if="${record.warrantyVisitNo} != null">
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_text">
+                        <div class="weui-media-box__title divptrt">
+                        	<span th:text="${record.warrantyVisitNo.warrantyPkgContent}"></span>
+                        	<span class="ptrt" th:if="${record.payAmt} !=0" th:text="|${record.payAmt}元|"></span>
+                        	<span class="ptrt" th:if="${record.payAmt} ==0" th:text="免费"></span></div>
+                        <p class="weui-media-box__desc descp" th:if="${record.warrantyVisitNo.warrantyPkgPeriod} != 1080" th:text="|上门期限：${record.warrantyVisitNo.warrantyPkgPeriod}个月|"></p>
+                        <p class="weui-media-box__desc descp" th:if="${record.warrantyVisitNo.warrantyPkgPeriod} == 1080">上门期限：3个月</p>
+                        <p class="weui-media-box__desc date"><span th:text="${record.visitFrom}"></span>--<span th:text="${record.visitTo}"></span></p>
+                        <ul class="weui-media-box__info yanbaoul">
+                            <li class="weui-media-box__info__meta" th:text="${record.warrantyNo}"></li>
+                            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra" th:text="${record.orderTimeStr}"></li>
+                            <li class="weui-media-box__info__meta name" th:text="${record.userNo.name}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--页脚-->
+    <div class="weui-footer footer">
+        <p class="weui-footer__text">&copy;南京富士通电子信息科技股份有限公司</p>
+    </div>
+	  <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/myWarrantyDetailpage.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>常见问题解决方案</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <script src="/js/fontsize.js"></script>
+    <script src="/js/jquery-1.11.3.js"></script>
+    <style>
+        .probtn{
+            margin:0.3rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--页面主体内容-->
+    <div class="page__bd">
+        <article class="weui-article">
+            <h1>联机打印问题</h1>
+                <section>
+                    <h3>1：使用USB口打印，下命令后打印机不打印</h3>
+                    <p>
+                        A: 确认USB线缆安装到位。
+                        B: 将打印机与电脑正常连接，确认开机正常，进纸正常。此过程中请再次确认，开机后电脑出现发现新硬件的提示，若没出现请更换USB接口。
+                        C: 请卸载电脑上原有的打印机驱动程序。
+                        D: 请上本公司官网(WWW.FUJITSU-NFCP.COM)，下载最新的自动安装驱动程序,解压后安装驱动。
+                    </p>
+                </section>
+                <section>
+                    <h3>2：使用USB转并口线缆不打印</h3>
+                    <p>
+                        A：本公司不建议使用此连接方式，打印机无法保证打印过程的稳定性。
+                        B: 我们建议打印机无USB接口的情况下，可选择升级打印机主板加装USB接口或在电脑端加装并口卡。
+                        C: 若必须使用此方式连接，请更换其他品牌的线缆多次测试。
+                    </p>
+                </section>
+               <section>
+                <h3>3：使用并口打印时，打印乱码或打印机不打印。</h3>
+                <p>
+                    A: 检查并口线缆安装到位，确认打印机处于直通连接的状态下。
+                    （若有网络适配器，加密狗等设备，请取下后测试）
+                    B: 检查打印机驱动程序是否出于异常状态。
+                    （异常状态：脱机，暂停，有未完成的打印命令）
+                    C: 恢复打印机出厂设置，重新安装打印机驱动程序。
+                </p>
+               </section>
+        </article>
+    </div>
+    <!--底部按钮-->
+    <div class="probtn">
+        <a href="/page/problemlist" class="weui-btn weui-btn_primary">未解决，返回上一步</a>
+    </div>
+</div>
+</body>
+</html>

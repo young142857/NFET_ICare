@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>常见问题</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/problemlist.css"/>
+    <script src="/js/fontsize.js"></script>
+    <script src="/js/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--页面顶部，搜索框-->
+    <div class="header">
+        <!--搜索框-->
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="" />
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label  class="weui-search-bar__label search" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>搜索</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+    </div>
+    <!--搜索框下来列表-->
+    <!-- <div class="weui-cells searchbar-result droplist" id="searchResult" style="display:none">
+        <div class="weui-cell weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <p class="p1">吃饭</p>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <p class="p1">睡觉</p>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <p class="p1">喝茶</p>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <p class="p1">洗脸</p>
+            </div>
+        </div>
+    </div> -->
+    <div class="main">
+        <div class="weui-cells">
+                <div class="weui-cell choose">
+                    <p>选择问题</p>
+                </div>
+            <a class="weui-cell weui-cell_access" href="/page/problemsteps">
+                <div class="weui-cell__bd">
+                    <p class="probp">问题一：打印机印字问题</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="/page/problemstepstwo">
+                <div class="weui-cell__bd">
+                    <p class="probp">问题二：打印机走纸问题</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="/page/problemstepsthree">
+                <div class="weui-cell__bd">
+                    <p class="probp">问题三：打印机联机打印问题</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+        <!--按钮-->
+        <!-- <div class="btn">
+            <a href="#" class="weui-btn weui-btn_primary">返回上一步</a>
+        </div> -->
+    </div>
+</div>
+<script src="js/problemlist.js"></script>
+</body>
+</html>

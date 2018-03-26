@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "mybatis-3-mapper" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.nfet.icare.dao.ParseExcelMapper">
+	<insert id="insertDeviceInfo" parameterType="java.util.List">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>  
+        
+   		insert into conf_device_info
+   		(uid,device_no,name,type,mfg_date,create_time,last_modify_time) 
+   		values  
+	    <foreach collection="list" item="item" index="index" separator="," >  
+	        (#{uid,jdbcType=VARCHAR},#{item.deviceNo},#{item.name},#{item.type},
+	        #{item.mfgDate},#{item.createTime},#{item.lastModifyTime})  
+	    </foreach> 
+	</insert>
+</mapper>

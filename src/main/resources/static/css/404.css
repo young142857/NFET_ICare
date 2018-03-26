@@ -1,0 +1,55 @@
+body{
+    background:#F7F7F7;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gifbox{
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-top: 1rem;
+    margin-bottom: 0.85rem;
+}
+.mainbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.item1{
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #404040;
+    margin-bottom: 0.3rem;
+}
+.item2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sp1{
+    font-size: 0.34rem;
+    color: #666666;
+    justify-self: center;
+}
+.sp2{
+    font-size: 0.28rem;
+    color: #999999;
+    margin-top: 0.15rem;
+}
+
+.btnbox{
+    width: 4rem;
+    height: 0.84rem;
+    border-radius:0.1rem;
+    border: 0.01rem solid #E64340;
+    font-size: 0.3rem;
+    color: #E64340;
+    background: #FFFFFF;
+    text-align: center;
+    margin-top: 0.68rem;
+    padding-top: 0.25rem;
+}

@@ -1,0 +1,49 @@
+.logobox{
+    height: 2.7rem;
+    display: flex;
+    justify-content: center;
+}
+.logobox > img{
+    margin-top: 0.53rem;
+}
+/*注册信息输入框*/
+.ptbox{
+    font-size: 0.3rem;
+    color:#B2B2B2;
+}
+.inputstyle{
+    width: 6rem;
+}
+.ptbox,.vcodeptbox,.ptimg,.vcodebt{
+    height: 0.94rem;
+}
+.ptimg{
+    width:0.94rem;
+}
+
+.vcodeptbox{
+    margin: auto;
+    height: 0.94rem;
+}
+.vcodeptbox>button{
+    margin: auto;
+    height: 0.94rem;
+}
+.vcodebt{
+    color: #E64240;
+    font-size: 0.3rem;
+}
+.phoneinput,.vcodept{
+    width: 3.5rem;
+}
+/*注册按钮*/
+.zhucebt {
+    margin: 0.5rem 0.2rem;
+    height: 0.94rem;
+    width: 7.1rem;
+}
+/*.zhucebt>a{*/
+    /*font-size: 0.3rem;*/
+    /*height: 0.94rem;*/
+    /*padding-top: 0.1rem;*/
+/*}*/

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.CompanyMapper">
+	<resultMap type="com.nfet.icare.pojo.Company" id="CompanyResultMap">
+		<id column="uid" property="uid"/>
+		<result column="company_id" property="companyId"/>
+		<result column="company_name" property="companyName"/>
+		<result column="industry" property="industry"/>
+		<result column="phone" property="phone"/>
+		<result column="province_id" property="provinceId"/>
+		<result column="city_id" property="cityId"/>
+		<result column="area_id" property="areaId"/>
+		<result column="address" property="address"/>
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+	</resultMap> 
+	
+	<resultMap type="com.nfet.icare.pojo.CacheInfo" id="AllCompanyMap">
+		<result column="company_name" property="key" />
+		<result column="company_id" property="value" />
+	</resultMap>
+	
+	<!-- 查询公司信息 -->
+	<sql id="company_cache_info">
+		company_id,company_name
+	</sql>
+	
+	<!-- 查询公司信息 -->
+	<select id="getAllCompany" resultMap="AllCompanyMap">
+		SELECT
+		<include refid="company_cache_info" />
+		FROM data_company
+	</select>
+	
+	<!-- Excel导入公司信息 -->
+	<insert id="importCompany" parameterType="com.nfet.icare.pojo.Company">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+			select replace(uuid(),'-','') from dual
+		</selectKey>
+
+		INSERT INTO
+		data_company(uid,company_id,company_name,industry,phone,address,create_time,last_modify_time)
+		VALUES
+		(#{uid,jdbcType=VARCHAR},#{company.companyId},#{company.companyName},#{company.industry},#{company.phone},
+		#{company.address},#{company.createTime},#{company.lastModifyTime})
+	</insert>
+	
+	<sql id="CompanyName">
+		company_id,company_name,industry,province_id,city_id,area_id,address
+	</sql>
+	<sql id="MaxCompanyId">
+		max(company_id)
+	</sql>
+	<sql id="onlyCompanyName">
+		company_name
+	</sql>
+	<sql id="companyInfo">
+		company_id,company_name,industry,phone,province_id,city_id,area_id,address
+	</sql>
+	
+	<!-- 查找公司是否存在 -->
+	<select id="checkCompanyName" parameterType="java.lang.String" resultMap="CompanyResultMap">
+		SELECT 
+		<include refid="CompanyName"/>
+		FROM data_company where company_name = #{name}
+	</select>
+	
+	<!-- 查找最大的公司编号 -->
+	<select id="getMaxCompanyId" resultType="java.lang.Integer">
+		SELECT
+		<include refid="MaxCompanyId"/>
+		FROM data_company
+	</select>
+	
+	<!-- 插入公司信息 -->
+	<insert id="insertCompany" parameterType="com.nfet.icare.pojo.Company">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        
+        INSERT INTO 
+        data_company(uid,company_id,company_name,create_time,last_modify_time)
+        VALUES
+        (#{uid,jdbcType=VARCHAR},#{company.companyId},#{company.companyName},
+        #{company.createTime},#{company.lastModifyTime})
+	</insert>
+	
+	<!-- 完善公司信息 -->
+	<update id="updateCompany" parameterType="com.nfet.icare.pojo.Company">
+		UPDATE data_company
+		<set>
+			<if test="company.companyName != null and company.companyName != ''">
+				company_name = #{company.companyName},
+			</if>
+			<if test="company.industry != null and company.industry != ''">
+				industry = #{company.industry},
+			</if>
+			<if test="company.provinceId != null and company.provinceId != ''">
+				province_id = #{company.provinceId},
+			</if>
+			<if test="company.cityId != null and company.cityId != ''">
+				city_id = #{company.cityId},
+			</if>
+			<if test="company.areaId != null and company.areaId != ''">
+				area_id = #{company.areaId},
+			</if>
+			<if test="company.address != null and company.address != ''">
+				address = #{company.address},
+			</if>
+			<if test="company.lastModifyTime != null">
+				last_modify_time = #{company.lastModifyTime},
+			</if>
+		</set>
+		<where>
+			company_id = #{company.companyId}
+		</where>		
+	</update>
+	
+	<!-- 根据公司编号查找公司名 -->
+	<select id="getCompanyName" parameterType="java.lang.Integer" resultType="java.lang.String">
+		SELECT 
+		<include refid="onlyCompanyName" />
+		FROM data_company
+		<where>
+			company_id = #{companyId}
+		</where>
+	</select>
+	
+	<!-- 根据公司编号查找公司信息 -->
+	<select id="queryCompanyInfo" parameterType="java.lang.Integer" resultMap="CompanyResultMap">
+		SELECT 
+		<include refid="companyInfo" />
+		FROM data_company
+		<where>
+			company_id = #{companyId}
+		</where>
+	</select>
+</mapper>

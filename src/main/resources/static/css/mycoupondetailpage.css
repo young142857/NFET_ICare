@@ -1,0 +1,104 @@
+html{
+    height: 100%;
+    background: #f8f8f8;
+}
+
+.itembox{
+    width: 7.5rem;
+    height: 6.3rem;
+    background:url("../image/mycoupondetailpage/bg.png") no-repeat center;
+    background-size: 7.5rem 6.3rem;
+    padding-top: 0.1rem;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.itemboxs{
+    width: 7.5rem;
+    height: 7.81rem;
+    background:url("../image/mycoupondetailpage/7.png") no-repeat center;
+    background-size: 7.5rem 7.81rem;
+    padding-top: 0.1rem;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.item1{
+    align-self:  flex-start;
+    margin-left: 0.5rem;
+    margin-top: 0.3rem;
+}
+.item1,.sp1{
+    font-size: 0.26rem;
+    color: #404040;
+}
+.item2,.item4{
+    margin-top: 0.3rem;
+}
+.item2{
+    width: 1.14rem;
+    height: 1.14rem;
+    border-radius: 50%;
+}
+.item3{
+    font-size: 0.46rem;
+    color: #404040;
+    margin-top: 0.5rem;
+}
+.item4{
+    border-color: #f19249;
+    color: #f19249;
+    width: 4.1rem;
+}
+.item5{
+    font-size: 0.26rem;
+    color: #b3b3b3;
+    margin-top: 0.3rem;
+}
+.item6{
+    height: 0.3rem;
+    display: flex;
+    margin-top: 0.65rem;
+}
+.item6s{
+    height: 0.3rem;
+    display: flex;
+    margin-top: 0.8rem;
+}
+.item7{
+    margin-top: 0.3rem;
+    font-size: 0.25rem;
+    color: #b3b3b3;
+    width: 6.5rem;
+    border-top: 0.01rem solid #e6e6e6;
+    padding-top: 0.45rem;
+    line-height: 1.2;
+}
+.cardnum{
+    font-size: 0.3rem;
+}
+.sp2{
+    font-size: 0.26rem;
+    color: #999999;
+}
+.middle{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.qrcode,.qrcodes{
+    width: 3rem;
+    height: 3rem;
+}
+.qrcode{
+    margin:0.2rem 0;
+}
+.qrcodes{
+    margin-top:0.5rem;
+}
+.footbox {
+    margin-top: 0.1rem;
+}
+.footboxs{
+    margin-top: 1.5rem;
+}

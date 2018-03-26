@@ -1,0 +1,106 @@
+.container,.header{
+    background: #F7F7F7;
+}
+.js_dialog{
+    z-index: 100000;
+}
+.weui-cell{
+    z-index: 0;
+}
+.header{
+    width: 7.5rem;
+    height: 5.8rem;
+}
+.header,.mianlist{
+    background: #FFFFFF;
+}
+.vipcard{
+    width: 6.77rem;
+    height: 3.93rem;
+    font-size: 0.3rem;
+    margin: 0.35rem auto 0.15rem;
+    background: url(../image/mydata/12.png) no-repeat center;
+    background-size: 6.77rem 3.93rem;
+    padding: 0.25rem 0.3rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.vipcard,.item1,.editdatda,.vipcard .user,.headlist,.inteagrl,.warrantycard,.coupon{
+    display: flex;
+}
+.vipcard .user{
+    justify-content: space-between;
+    width: 100%;
+}
+.userimg{
+    width: 0.96rem;
+    height: 0.96rem;
+    margin-right: 0.25rem;
+}
+
+.vipcard .user .user-info .username{
+    font-size: 0.3rem;
+    line-height: 0.32rem;
+    color: #FFFFFF;
+}
+.vipcard .user .user-info .num{
+    margin: 0.11rem 0;
+    font-size: 0.22rem;
+    line-height: 0.24rem;
+    color: #FFFFFF;
+}
+.vipcard .user .user-info .phonecd{
+    margin-top: 0.2rem;
+    font-size: 0.2rem;
+    line-height: 0.22rem;
+    color: #FFFFFF;
+}
+.vipcard .vipcode{
+    align-self: flex-end;
+    font-size: 0.22rem;
+    line-height: 0.22rem;
+    color: #e8bd3f;
+}
+
+.headlist{
+    justify-content:center;
+    margin-top: 0.2rem;
+
+}
+
+.headlist1>a{
+    color: #E64240;
+    font-size: 0.45rem;
+}
+.headlist1{
+    height:0.5rem;
+}
+.headlist2{
+    height: 0.26rem;
+}
+.headlist2>a{
+    color: #4c4c4c;
+    font-size: 0.25rem;
+}
+
+.inteagrl,.warrantycard,.coupon{
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0.7rem;
+}
+
+.line{
+    height: 0.8rem;
+    border-right:0.01rem solid #D1D1D1;
+    margin-top: 0.5rem;
+}
+.mianimg{
+    width: 0.88rem;
+    height: 0.88rem;
+}
+
+.mianlist{
+    margin-top: 0.15rem;
+    font-size: 0.3rem;
+    color:#4c4c4c;
+}

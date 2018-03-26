@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>我的设备</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/myequipment.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+<!--页面顶部-->
+ <div class="header">
+    <div class="headbox">
+        <div style="font-size: 0.34rem;color:#404040;">我的设备列表</div>
+        <img th:if="${type} == 1" class="bind" src="/image/button.png" style="width: 1.54rem;height: 0.28rem;"/>
+        <img th:if="${type} == 2" class="fix" src="/image/button.png" style="width: 1.54rem;height: 0.28rem;"/>
+        <img th:if="${type} == 3" class="warranty" src="/image/button.png" style="width: 1.54rem;height: 0.28rem;"/>
+    </div>
+</div>
+<!--页面主体单个产品列表-->
+    <div class="main">
+        <div class="equipmentbox" th:each="equipment,eqStat:${deviceList1}" >
+           <div class="box_img">
+               <img th:src="@{${equipment.deviceNo.image}+'_04.png'}"  style="width: 1.58rem;height: 1.58rem;"/>
+           </div>
+           <div class="data_box">
+               <ul class="datalist">
+                   <li class="nameli">
+                       <div class="li_item">
+                           <span class="namesp1" th:text="${equipment.deviceNo.type}"></span>
+                           <span class="namesp2" th:text="${equipment.deviceNo.deviceNo }"></span>
+                       </div>
+                       <div class="arrowbox">
+                           <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                       </div>
+                   </li>
+                   <li class="timeli">
+                       <span class="timesp1">添加日期：</span>
+                       <span class="timesp1" th:text="${equipment.bindTimeStr}"></span>
+                   </li>
+                   <li class="timelis">
+                       <span class="timesp1">保修截止日期：</span>
+                       <span class="timesp1" th:text="${equipment.warrantTo}"></span>
+                   </li>
+                   <li class="btnli">
+                       <div th:if="${equipment.status} == 0" class="btn1"><a href="#">报修</a></div>
+                       <div th:if="${equipment.status} == 1" class="btn3"><a href="#">维修中</a></div>
+                       <div class="btn2"><a href="#">延保</a></div>
+                   </li>
+               </ul>
+           </div>
+       </div>
+    </div>
+	<div class="main_x">
+        <div class="equipmentbox" th:each="equipment,eqStat:${deviceList2}" >
+           <div class="box_img">
+               <img th:src="@{${equipment.deviceNo.image}+'_04.png'}" style="width: 1.58rem;height: 1.58rem;"/>
+           </div>
+           <div class="data_box">
+               <ul class="datalist">
+                   <li class="nameli">
+                       <div class="li_item">
+                           <span class="namesp1" th:text="${equipment.deviceNo.type}"></span>
+                           <span class="namesp2" th:text="${equipment.deviceNo.deviceNo }"></span>
+                       </div>
+                       <div class="arrowbox">
+                           <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                       </div>
+                   </li>
+                   <li class="timeli">
+                       <span class="timesp1">添加日期：</span>
+                       <span class="timesp1" th:text="${equipment.bindTimeStr}"></span>
+                   </li>
+                   <li class="timelis">
+                       <span class="timesp1">保修截止日期：</span>
+                       <span class="timesp1" th:text="${equipment.warrantTo}"></span>
+                   </li>
+                   <li class="btnli">
+                       <div th:if="${equipment.status} == 0" class="btn1"><a href="#">报修</a></div>
+                       <div th:if="${equipment.status} == 1" class="btn3"><a href="#">维修中</a></div>
+                       <div class="btn2"><a href="#">延保</a></div>
+                   </li>
+               </ul>
+           </div>
+       </div>
+    </div>
+	<div class="main_s">
+        <div class="equipmentbox" th:each="equipment,eqStat:${deviceList3}" >
+           <div class="box_img">
+               <img th:src="@{${equipment.deviceNo.image}+'_04.png'}" style="width: 1.58rem;height: 1.58rem;"/>
+           </div>
+           <div class="data_box">
+               <ul class="datalist">
+                   <li class="nameli">
+                       <div class="li_item">
+                           <span class="namesp1" th:text="${equipment.deviceNo.type}"></span>
+                           <span class="namesp2" th:text="${equipment.deviceNo.deviceNo }"></span>
+                       </div>
+                       <div class="arrowbox">
+                           <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                       </div>
+                   </li>
+                   <li class="timeli">
+                       <span class="timesp1">添加日期：</span>
+                       <span class="timesp1" th:text="${equipment.bindTimeStr}"></span>
+                   </li>
+                   <li class="timelis">
+                       <span class="timesp1">保修截止日期：</span>
+                       <span class="timesp1" th:text="${equipment.warrantTo}"></span>
+                   </li>
+                   <li class="btnli">
+                       <div th:if="${equipment.status} == 0" class="btn1"><a href="#">报修</a></div>
+                       <div th:if="${equipment.status} == 1" class="btn3"><a href="#">维修中</a></div>
+                       <div class="btn2"><a href="#">延保</a></div>
+                   </li>
+               </ul>
+           </div>
+       </div>
+    </div>
+    <div th:if="${type} == 0" class="msgstyle">您还没有绑定设备诶，赶快行动吧！<br/><a href="/wxjs/scan?type=1">立即绑定</a>可获超值延保券哦！</div>
+	<!--BEGIN 按钮-->
+		<!--<img th:if="${type} == 1" class="roundbtn bind" src="/image/11.png"/>-->
+	<!--END 按钮--> 
+	<!--BEGIN 按钮-->
+		<!--<img th:if="${type} == 2" class="roundbtn fix" src="/image/11.png"/>-->
+	<!--END 按钮-->
+	<!--BEGIN 按钮-->
+		<!--<img th:if="${type} == 3" class="roundbtn warranty" src="/image/11.png"/>-->
+	<!--END 按钮-->
+	<!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/myequipment.js"></script>
+</body>
+</html>

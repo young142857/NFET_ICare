@@ -1,0 +1,125 @@
+body{
+    background: #F7F7F7;
+}
+.js_dialog{
+    z-index: 100000;
+}
+.header,.listbox,.link,.footer{
+    background: #ffffff;
+}
+.weui-cell{
+    z-index: 0;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.2rem;
+}
+.bigimg{
+    width: 3.8rem;
+    height: 3.8rem;
+}
+.redpacket{
+    position: fixed;
+    top: 0.4rem;
+    right: 0.4rem;
+}
+.dot,.twobtn{
+    display: flex;
+}
+.dot{
+    width: 0.5rem;
+    height: 0.06rem;
+    margin-bottom: 0.2rem;
+}
+.main{
+    margin-top:0.2rem;
+    height: 5.12rem;
+}
+.listbox{
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.35rem;
+}
+.mainlist>li{
+    display: flex;
+    justify-content: space-between;
+}
+.bigsp{
+    font-size: 0.34rem;
+    margin-top: 0.48rem;
+}
+.bigsp,.listsp1,.btn1>a,.bd_p{
+    color: #404040;
+}
+.imgsp{
+    width: 2.78rem;
+    height: 0.8rem;
+    margin-top: 0.2rem;
+}
+.listsp1,.listsp2{
+    font-size: 0.26rem;
+}
+.listsp2{
+    color: #9b9b9b;
+}
+.codeli{
+    margin-bottom:0.37rem;
+    margin-left: 0.31rem;
+}
+.ulitem1,.ulitem2,.ulitem3,.ulitem4{
+    margin: 0.2rem 0.31rem 0;
+}
+.bd_p,.btn1,.btn2,.btn3{
+    font-size: 0.3rem;
+}
+.footer{
+    margin-top: 1.45rem;
+    height: 1rem;
+    position: fixed;
+    bottom: 0;
+}
+.btn1,.btn2,.btn3{
+    width: 3.75rem;
+    height: 1rem;
+    text-align: center;
+    padding-top: 0.4rem;
+}
+.btn2 {
+    background: #e64340;
+}
+.btn3{
+	background: #e6e6e6;
+}
+.btn2>a{
+    color: #ffffff;
+}
+
+.dialog__title{
+    font-size: 0.4rem;
+    font-weight: bold;
+    color: #333333;
+}
+.dialog__bdfst{
+    font-size: 0.3rem;
+    color: #999999;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.7rem 0 0.5rem;
+}
+.dialog__bd{
+    font-size: 0.4rem;
+    color: #f8b551;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.1rem;
+    margin-bottom: 0.36rem;
+    padding: 0 0.75rem 0 0.55rem;
+}
+.dialog__bd>span{
+    font-weight:bold;
+}
+.dialog_hd{
+    padding-top: 0.1rem;
+}

@@ -1,0 +1,45 @@
+body{
+    background: #F7F7F7;;
+}
+
+
+.mainlab,.baocunbt>a{
+    font-size: 0.3rem;
+}
+
+.cellhd{
+    position: relative;
+}
+
+.sp1,.sp2,.sp3,.sp4{
+    position: absolute;
+    top: 0;
+    color: #E64349;
+}
+.sp1{
+    left:0.6rem;
+}
+
+.sp2{
+    left: 0.9rem;
+}
+.sp3,.sp4{
+    left: 1.2rem;
+}
+.baocunbt{
+    margin: 0.5rem 0.3rem 0;
+    height: 0.94rem;
+}
+.baocunbt>a{
+    padding-top: 0.1rem;
+    height: 0.94rem;
+}
+
+.tst_1,.tst_2{
+    display: none;
+}
+.tstbox_1,.tstbox_2{
+    font-size: 0.3rem;
+    padding-top: 0.9rem;
+}
+

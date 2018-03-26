@@ -1,0 +1,136 @@
+body{
+    background: #F7F7F7;
+}
+.header,.main{
+    background: #ffffff;
+}
+.main{
+    margin-top:0.04rem;
+    padding-bottom: 0.4rem;
+    display: flex;
+    flex-direction:column;
+}
+.top{
+    height: 1rem;
+}
+
+.toplogo,.toplogo>img{
+    width: 1.23rem;
+    height:0.61rem;
+    float: left;
+    margin: 0.08rem 0.2rem 0;
+}
+.topmain{
+    height:0.61rem;
+    font-size: 0.34rem;
+    font-weight: bold;
+    color:#404040;
+    margin-top: 0.3rem;
+    margin-left: 0.2rem;
+    float: left;
+}
+
+.declaration{
+    width: 1.5rem;
+    height: 0.24rem;
+    font-size:0.2rem;
+    display: flex;
+    align-self: flex-end;
+    margin-top: 0.4rem;
+}
+.declaration>a>img{
+    width: 0.2rem;
+    height: 0.2rem;
+}
+
+.round{
+    width: 1.94rem;
+    height: 1.94rem;
+    border-radius: 50%;
+    background:#e64340;
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+}
+.round1{
+    height: 0.2rem;
+    font-size: 0.2rem;
+    color: #ffffff;
+    margin-top: 0.1rem;
+    text-align: center;
+}
+
+.round2 {
+    font-size: 0.88rem;
+    color: #ffffff;
+    font-family: 华文细黑;
+    margin-top: 0.15rem;
+    text-align: center;
+}
+.btnbox{
+    width: 4.08rem;
+    height: 0.86rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    align-self: center;
+}
+.midbtn{
+    color:#E64340;
+    border-color: #E64340;
+}
+
+.barcodebox{
+    border-top: 0.01rem dashed #D1D1D1;
+    width: 6.68rem;
+    margin: 0 auto;
+    font-size: 0.3rem;
+    color: #999999;
+}
+.barcodelist{
+    width: 6.68rem;
+}
+.barcodelist>li{
+    width: 6.68rem;
+    margin-top: 0.28rem;
+}
+.spft,.name{
+    float: right;
+}
+.barcode{
+    margin-top: 0.34rem;
+}
+.codebox{
+    font-size: 0.2rem;
+    color: #333333;
+    text-align: center;
+}
+.ptrt{
+    float: right;
+    font-size: 0.3rem;
+    color:#E64340;
+}
+.yanbao{
+    margin-top: 0.1rem;
+}
+.cellp,.divptrt{
+    font-size: 0.3rem;
+    color:#404040;
+}
+.descp{
+    font-size: 0.26rem;
+    color:#404040;
+    margin-top: 0.2rem;
+    margin-bottom:0.36rem;
+}
+.yanbaoul{
+    border-top: 0.01rem dashed #D1D1D1;
+    padding-top: 0.2rem;
+    font-size: 0.2rem;
+    color: #b3b3b3;
+}
+.footer{
+    margin-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}

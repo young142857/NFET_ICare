@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/myorder.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!--导航条-->
+        <div class="weui-navbar">
+            <div class="weui-navbar__item weui-bar__item_on" id="btn1">
+                延保订单
+            </div>
+            <div class="weui-navbar__item" id="btn2">
+                报修订单
+            </div>
+        </div>
+    </div>
+    <!--延保订单-->
+    <div class="main_fix">
+        <div class="detail">
+            <div class="spbox">
+                <span class="sp1">针式打印机2年延保</span>
+                <span class="sp2">待支付</span>
+            </div>
+            <div class="format order">
+                <div class="imgbox">
+                    <img src="image/myorder/产品图片.png" style="width:1.74rem;height: 1.75rem;">
+                </div>
+                <div class="code">
+                   <div class="ordercode">
+                      <span>订单编号</span><span>32413440100347710</span>
+                   </div>
+                   <div class="eqcode">
+                       <span>设备编码</span><span>VIN215200188201</span>
+                   </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间:</span><span class="timesp">2017年05月01日</span>
+                </div>
+                <div class="btnbox">
+                    <div class="btn1">
+                        <a href="#">删除订单</a>
+                    </div>
+                    <div class="btn2">
+                        <a href="#">支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="spbox">
+                <span class="sp1">针式打印机2年延保</span>
+                <span class="sp3">已完成</span>
+            </div>
+            <div class="format" id="done">
+                <div class="imgbox">
+                    <img src="image/myorder/产品图片.png" style="width:1.74rem;height: 1.75rem;">
+                </div>
+                <div class="code">
+                    <div class="ordercode">
+                        <span>订单编号</span><span>32413440100347710</span>
+                    </div>
+                    <div class="eqcode">
+                        <span>设备编码</span><span>VIN215200188201</span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间:</span><span class="timesp">2017年05月01日</span>
+                </div>
+                <div class="btnbox">
+                    <div class="btn1">
+                        <a href="#">删除订单</a>
+                    </div>
+                    <div class="btn3">
+                        <a href="estimate.html">评价订单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--报修订单-->
+    <div class="main_order">
+        <div class="detail">
+            <div class="spbox">
+                <span class="sp1">设备保修</span>
+                <span class="sp2">待支付</span>
+            </div>
+            <div class="format fix">
+                <div class="imgbox">
+                    <img src="image/myorder/产品图片.png" style="width:1.74rem;height: 1.75rem;">
+                </div>
+                <div class="code1">
+                    <div class="name">DKP225123</div>
+                    <div class="ordercode1">
+                        <span>订单编号</span><span>32413440100347710</span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码</span><span>VIN215200188201</span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间:</span><span class="timesp">2017年05月01日</span>
+                </div>
+                <div class="btnbox">
+                    <div class="btn1">
+                        <a href="#">删除订单</a>
+                    </div>
+                    <div class="btn2">
+                        <a href="#">支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="spbox">
+                <span class="sp1">设备保修</span>
+                <span class="sp2">维修中</span>
+            </div>
+            <div class="format fix">
+                <div class="imgbox">
+                    <img src="image/myorder/产品图片.png" style="width:1.74rem;height: 1.75rem;">
+                </div>
+                <div class="code1">
+                    <div class="name">DKP225123</div>
+                    <div class="ordercode1">
+                        <span>订单编号</span><span>32413440100347710</span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码</span><span>VIN215200188201</span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间:</span><span class="timesp">2017年05月01日</span>
+                </div>
+                <div class="btnbox">
+                    <div class="btn1">
+                        <a href="#">删除订单</a>
+                    </div>
+                    <div class="btn3">
+                        <a href="estimate.html">评价订单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="spbox">
+                <span class="sp1">设备报修</span>
+                <span class="sp3">已完成</span>
+            </div>
+            <div class="format fix">
+                <div class="imgbox">
+                    <img src="image/myorder/产品图片.png" style="width:1.74rem;height: 1.75rem;">
+                </div>
+                <div class="code1">
+                    <div class="name">DKP225123</div>
+                    <div class="ordercode1">
+                        <span>订单编号</span><span>32413440100347710</span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码</span><span>VIN215200188201</span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间:</span><span class="timesp">2017年05月01日</span>
+                </div>
+                <div class="btnbox">
+                    <div class="btn1">
+                        <a href="#">删除订单</a>
+                    </div>
+                    <div class="btn3">
+                        <a href="estimate.html">评价订单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/myorder.js"></script>
+</body>
+</html>

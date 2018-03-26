@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.DeviceMapper">
+	<resultMap type="com.nfet.icare.pojo.Mgr_Device" id="Mgr_DeviceResultMap">
+		<id column="uid" property="uid"/>
+		<result column="user_no" property="userNo"/>
+		<result column="bind_time" property="bindTime" 
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="ecard_no" property="ecardNo"/>
+		<result column="warrant_period" property="warrantPeriod"/>
+		<result column="warrant_from" property="warrantFrom"/>
+		<result column="warrant_to" property="warrantTo"/>
+		<result column="visit_to" property="visitTo"/>
+		<result column="warrant_status" property="warrantStatus"/>
+		<result column="status" property="status"/>
+		<result column="create_time" property="createTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+		<association column="device_no" property="deviceNo" javaType="com.nfet.icare.pojo.DeviceInfo">
+			<id column="uid" property="uid"/>
+			<result column="device_no" property="deviceNo"/>
+			<result column="name" property="name"/>
+			<result column="type" property="type"/>
+			<result column="model" property="model"/>
+			<result column="image" property="image"/>
+			<result column="mfg_date" property="mfgDate"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+	</resultMap> 
+	
+	<sql id="deviceInfo">
+		data_device.device_no,conf_device_info.name,conf_device_info.type,
+		conf_device_info.image,ecard_no,bind_time,warrant_to,warrant_from,
+		warrant_period,data_device.status,data_device.warrant_status,
+		conf_device_info.model,conf_device_info.mfg_date
+	</sql>
+	
+	<!-- 查找用户设备列表 -->
+	<select id="deviceData" resultMap="Mgr_DeviceResultMap" parameterType="java.lang.String">
+		SELECT 
+		<include refid="deviceInfo" />
+		FROM data_device 
+		LEFT JOIN conf_device_info 
+		ON data_device.device_no = conf_device_info.device_no
+		LEFT JOIN data_user 
+		ON data_user.user_no = data_device.user_no
+		WHERE data_user.user_no = #{userNo}
+		ORDER BY bind_time desc		
+	</select>
+</mapper>

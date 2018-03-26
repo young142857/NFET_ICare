@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes"/>
+    <title>流量统计首页</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/mgr/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/mgr/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/mgr/reset.css"/>
+    <link rel="stylesheet" href="/css/mgr/common.css"/>
+    <link rel="stylesheet" href="/css/mgr/trafficstatistics.css"/>
+    <link rel="stylesheet" href="/css/mgr/modaldialog.css"/>
+    <script src="/js/mgr/echarts.min.js"></script>
+    <script src="/js/mgr/jquery.min.js"></script>
+    <script src="/js/mgr/datatable/jquery.dataTables.min.js"></script>
+    <script src="/js/mgr/datatable/dataTables.bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--顶部导航条-->
+    <div class="navigation  col-lg-12">
+        <!--导航条左部-->
+        <ul class="leftlist">
+            <li class="imgli"><img src="/image/images/trafficstatistics/logo.png"/></li>
+            <li class="navli-first"><a class="backstyle" href="javascript:;">流量统计</a></li>
+            <li class="navli-second"><a href="/page/callcentermarketdepartment">客户资料管理</a></li>
+        </ul>
+        <!--导航条右部-->
+        <ul class="rightlist">
+            <li class="firstli"><div class="name" th:text="${session.staff.staffName}"></div><div class="identity"><a href="/mgr/exitSys">退出</a></div></li>
+            <li><img th:src="@{${session.staff.staffImage}}"/></li>
+            <li class="verticalline"></li>
+        </ul>
+    </div>
+    <!--页面全局主体-->
+    <div class="main">
+        <!--页面左侧下拉列表-->
+        <div class="dorpdown">
+            <!-- <div class="flow">
+            	<img class="img1" src="/image/images/trafficstatistics/2.png"/>
+            	<span>流量统计</span>
+            </div> -->
+            <div class="user">
+                <img class="img" src="/image/images/trafficstatistics/1.png" alt=""/>
+                <span><a href="javascript:;">用户统计</a></span>
+                <!-- <img class="img2" src="/image/images/trafficstatistics/5.png" alt=""/> -->
+            </div>
+            <ul class="downlist">
+                <li id="downli-first"><a href="javascript:;" style="color:#00a0e9;">用户总计</a></li>
+                <li id="downli-second"><a href="javascript:;">报修统计</a></li>
+                <li id="downli-third"><a href="javascript:;">延保统计</a></li>
+            </ul>
+        </div>
+        <!--用户总计部分-->
+        <div class="user-main">
+            <!--页面主体图标-->
+            <div class="chart">
+                <!--折线图-->
+                <div class="linechart" id="linechart"></div>
+            </div>
+            <!--数据表格-->
+            <div class="datatable">
+                <div class="tabletitle">
+                    <div class="">
+                        <h1 class="page-header title">全部用户</h1>
+                    </div>
+                </div>
+                <!--<div class="search_box">-->
+                    <!--<label>-->
+                        <!--<input type="search" style="font-weight: 100; " class="form-control input-sm" aria-controls="dataTables-example" placeholder="请输入您想要搜索的会员号">-->
+                    <!--</label>-->
+                    <button class="btn btn-danger search-btn" style="float: right; padding:4px 12px;height:29px;width: 130px;border-radius: 0;">显示所有会员</button>
+                    <button class="btn btn-danger search-btn" style="float: right;margin-right: 57%; padding:4px 12px;height:29px;width: 95px;border-radius: 0;">搜索</button>
+                <!--</div>-->
+                <!--表格主体-->
+                <table id="table_id_example" class="table table-striped table-bordered table-hover table-main">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                
+                </table>
+            </div>
+        </div>
+        <!--报修统计部分-->
+        <div style="display: none;" class="repair-main">
+            <!--报修统计图标-->
+            <div class="chart">
+                <!--报修统计折线图-->
+                <div class="linechart" id="repairchart"></div>
+            </div>
+            <!--用户统计饼状图-->
+            <div class="chart">
+                <!--左饼状图-->
+                <div class="piechart" id="repairpie"></div>
+                <!--右饼状图-->
+                <div class="piechart" id="repairpie2"></div>
+            </div>
+        </div>
+        <!--延保统计部分-->
+        <div style="display: none;" class="warraty-main">
+            <!--延保统计图标-->
+            <div class="chart">
+                <!--延保统计折线图-->
+                <div class="linechart" id="warratychart"></div>
+            </div>
+            <!--延保统计饼状图-->
+            <div class="chart">
+                <!--左饼状-->
+                <div class="piechartx" id="warratypie"></div>
+                <!--右部数据表格-->
+                <div class="piecharttable">
+                    <table id="warratytable" class="table table-striped table-bordered table-hover table-pie">
+                        <thead>
+                        <!--<tr>
+                            <th>延保套餐</th>
+                            <th>份数</th>
+                            <th>金额</th>
+                        </tr>-->
+                        </thead>
+                        <tbody>
+                        <!--<tr>
+                            <td>一年延保</td>
+                            <td>234</td>
+                            <td>25321</td>
+                        </tr>
+                        <tr>
+                            <td>一年延保</td>
+                            <td>234</td>
+                            <td>25321</td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--页脚部分-->
+    <div class="footer">
+        <span>Copyright&copy;2017南京富士通电子信息科技股份有限公司</span>
+    </div>
+</div>
+<!--客户资料详情模态对话框部分-->
+<div class="modalbox">
+    <div class="modaldialog">
+        <div class="modalcontent">
+            <!--模态框页头标题部分-->
+            <div class="modaltitle">
+                <div class="sp_first">客户资料详情</div>
+                <div class="sp_second"><a href="javascript:;"><img src="/image/images/customerdata/10.png"/></a></div>
+                <div class="sp_third"><!-- <a href="javascript:;">编辑</a> --></div>
+            </div>
+            <!--模态框表格-->
+            <table class="modal-table">
+                <tr class="modal-tr">
+                    <th class="modal-th">会员卡号</th>
+                    <td id="userNo" class="modal-td"></td>
+                    <th class="modal-th">公司全称</th>
+                    <td class="modal-tdx"><input id="company_name" type="text" readonly="readonly"/></td>
+                </tr>
+                <tr class="modal-tr">
+                    <th class="modal-th">注册日期</th>
+                    <td id="regTime" class="modal-td"></td>
+                    <th class="modal-th">所属行业</th>
+                    <td id="industry" class="modal-tdx"></td>
+                </tr>
+                <tr class="modal-tr">
+                    <th class="modal-th">会员积分</th>
+                    <td id="score" class="modal-td"></td>
+                    <th class="modal-th">公司电话</th>
+                    <td class="modal-tdx"><input type="text" readonly="readonly" id="company_phone"/></td>
+                </tr>
+                <tr class="modal-tr">
+                    <th class="modal-th">会员姓名</th>
+                    <td id="name" class="modal-td"></td>
+                    <th class="modal-th">公司地址</th>
+                    <td id="address" class="modal-tdx"></td>
+                </tr>
+                <tr class="modal-tr">
+                    <th class="modal-th">会员电话</th>
+                    <td id="phone" class="modal-td"></td>
+                    <th class="modal-th"></th>
+                    <td class="modal-td"></td>
+                </tr>
+            </table>
+            <!--模态框按钮-->
+            <button class="btn btn-danger keepbtn" style="margin-left: 480px; padding:4px 12px;height:29px;width: 120px;">确定</button>
+        </div>
+    </div>
+</div>
+<!--客户资料详情模态对话框部分 END-->
+<script src="/js/mgr/linechart.js"></script>
+<script src="/js/mgr/repairchart.js"></script>
+<script src="/js/mgr/repairpie.js"></script>
+<script src="/js/mgr/warratychart.js"></script>
+<script src="/js/mgr/warratypie.js"></script>
+<script src="/js/mgr/trafficstatistics.js"></script>
+<!--用户统计数据表格-->
+<script src="/js/mgr/userstatistics.js"></script>
+<!--延保统计数据表格-->
+<script src="/js/mgr/warratytable.js"></script>
+</body>
+</html>

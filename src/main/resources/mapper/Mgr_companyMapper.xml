@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.CompanyMapper">
+	<resultMap type="com.nfet.icare.pojo.Mgr_Company" id="Mgr_CompanyResultMap">
+		<id column="uid" property="uid"/>
+		<result column="company_id" property="companyId"/>
+		<result column="company_name" property="companyName"/>
+		<result column="industry"  property="industry"/>
+		<result column="phone" property="companyPhone"/>
+		<result column="address" property="address"/>
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+		<association column="province_id" property="province" javaType="com.nfet.icare.pojo.Province">
+			<id column="uid" property="uid"/>
+			<result column="provice_id" property="provinceId"/>
+			<result column="province_name" property="provinceName"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="city_id" property="city" javaType="com.nfet.icare.pojo.City">
+			<id column="uid" property="uid"/>
+			<result column="city_id" property="cityId"/>
+			<result column="city_name" property="cityName"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+		<association column="area_id" property="area" javaType="com.nfet.icare.pojo.Area">
+			<id column="uid" property="uid"/>
+			<result column="area_id" property="areaId"/>
+			<result column="area_name" property="areaName"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+	</resultMap> 
+	
+	<!-- 客户公司列表 -->
+	<sql id="mgrCompanyInfo">
+		company_id,company_name,industry,phone,pro.province_name,
+		city.city_name,area.area_name,address
+	</sql>
+	
+	<!-- 客户公司列表 -->
+	<select id="companyList" resultMap="Mgr_CompanyResultMap">
+		SELECT 
+		<include refid="mgrCompanyInfo" />
+		FROM data_company
+		LEFT JOIN conf_province pro
+		ON data_company.province_id = pro.province_id
+		LEFT JOIN conf_city city
+		ON data_company.city_id = city.city_id
+		LEFT JOIN conf_area area
+		ON data_company.area_id = area.area_id
+		ORDER BY company_id 
+	</select>
+
+</mapper>

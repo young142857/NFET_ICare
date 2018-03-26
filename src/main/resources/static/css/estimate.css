@@ -1,0 +1,86 @@
+body{
+    background: #F7F7F7;
+}
+.header{
+    height: 3.6rem;
+    background: #FFFFFF;
+}
+.headerbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 1.62rem;
+    padding: 0.45rem 0.3rem 0;
+}
+.goods{
+    width: 1.24rem;
+    height: 1.22rem;
+}
+.estimate{
+    font-size: 0.26rem;
+    color: #666666;
+}
+.device{
+    display: none;
+}
+.starbox{
+    margin-left: 0.25rem;
+    display: flex;
+}
+.star{
+    width: 0.36rem;
+    height: 0.36rem;
+    display:block;
+    margin-right: 0.23rem;
+    /*background: url("../image/evaluate/3.png") no-repeat center;*/
+}
+.bg1{background: url("../image/evaluate/3.png") no-repeat center;
+    background-size: 0.36rem;
+}
+.bg2,.bg2x,.bg2s{background: url("../image/evaluate/2.png") no-repeat center;
+    background-size: 0.36rem;
+}
+.word,.word2,.word3{
+    font-size: 0.24rem;
+    color: #E64340;
+    width: 1rem;
+}
+.main{
+    margin-top: 1rem;
+    background: #FFFFFF;
+}
+.textarea,.service{
+    color: #999999;
+    font-size: 0.26rem;
+}
+.textarea1{
+    color: #404040;
+    font-size: 0.26rem;
+}
+.bdbox{
+    font-size: 0.3rem;
+    color: #404040;
+}
+.service{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.3rem;
+    height: 1.02rem;
+}
+.servicep{
+    color: #666666;
+}
+.starbox2,.starbox3{
+    display: flex;
+    margin-left: 1rem;
+}
+
+.btn{
+    margin-top: 0.5rem;
+    padding: 0 0.3rem;
+}
+
+.switch{
+    padding-top: 0.1rem;
+}

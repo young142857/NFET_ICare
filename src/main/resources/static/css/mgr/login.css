@@ -1,0 +1,95 @@
+.main{
+    width: 1366px;
+    height: 970px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.nav{
+    display: flex;
+    align-self: flex-start;
+    padding-left: 40px;
+}
+.bgbox{
+    background: url("../../image/images/login/bg2.png") no-repeat center;
+    width: 100%;
+    height: 758px;
+    background-size: 100% 758px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.color{
+    height:6px ;
+    background: #f2f2f2;
+}
+.loginbox{
+    background: url("../../image/images/login/7.png") no-repeat center;
+    width: 44.803%;
+    height: 366px;
+    padding-left: 296px;
+    padding-right: 20px;
+    padding-top: 96px;
+    display: flex;
+    flex-direction: column;
+}
+.jobcode,.password{
+    outline: medium;
+    border: none;
+    font-size:14px;
+    /* color: #cccccc; */
+}
+.codebox{
+    margin-bottom: 35px;
+    border-bottom: 1px solid #d6d6d6;
+}
+.jobcode,.password{
+    margin-left: 39px;
+}
+input::-webkit-input-placeholder{
+    font-size: 14px;
+    color: #cccccc;
+}
+
+input:-moz-placeholder{
+    font-size: 14px;
+    color: #cccccc;
+}
+
+input:-ms-input-placeholder{
+    font-size: 14px;
+    color: #cccccc;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+.copyright,.lorem{
+    font-size: 14px;
+}
+.copyright{
+    color: #666666;
+    padding-top:15px;
+}
+
+.lorem{
+    margin-top: 16px;
+    color: #999999;
+}
+.forget{
+    color: #6A7FA6;
+    font-size: 12px;
+    text-decoration: underline;
+}
+.loginbtn{
+    height: 44px;
+    background: #E5433F;
+    color: #ffffff;
+    margin-top: 30px;
+}
+.arrow{
+    margin-left: 10px;
+}

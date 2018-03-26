@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>我的订单</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/myorder.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!--页面顶部导航条-->
+        <div class="weui-navbar">
+            <div class="weui-navbar__item weui-bar__item_on" id="btn1">
+                延保订单
+            </div>
+            <div class="weui-navbar__item" id="btn2">
+                报修订单
+            </div>
+        </div>
+    </div>
+    <!--延保订单部分-->
+    <div class="main_fix">
+        <div class="detail" th:each="equipment,eqStat:${warrantyList1}">
+            <div class="spbox order">
+                <span th:if="${equipment.warrantyPkgNo} != null" class="sp1" th:text="${equipment.warrantyPkgNo.warrantyPkgContent}"></span>
+                <span th:if="${equipment.warrantyPkgNo} == null and ${equipment.warrantyVisitNo} != null" class="sp1" th:text="${equipment.warrantyVisitNo.warrantyPkgContent}"></span>
+                <div class="itembox">
+                    <span class="sp2">待支付</span>
+                    <span class="arrowsp">
+                         <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                     </span>
+                </div>
+            </div>
+            <div class="format">
+                <div class="imgbox">
+                    <img th:src="@{${equipment.deviceNo.image}+'_03.png'}" style="width:1.74rem;height: 1.75rem;"/>
+                </div>
+                <div class="code1">
+                    <div class="name" th:text="${equipment.deviceNo.type}"></div>
+                    <div class="ordercode1">
+                        <span>订单编号：</span><span class="device" th:text="${equipment.warrantyNo}"></span>                    	
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码：</span><span class="deviceNo"  th:text="${equipment.deviceNo.deviceNo}"></span>
+                        <span class="amount" style="display:none" th:text="${equipment.payAmt}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间：</span><span class="timesp" th:text="${equipment.orderTimeStr}"></span>
+                </div>
+                <div class="btnbox">
+                    <!--<div class="btn1">-->
+                        <!--<a href="#">删除订单</a>-->
+                    <!--</div>-->
+                    <div class="pay btn2">
+                        <a href="#">支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detail" th:each="equipment,eqStat:${warrantyList2}">
+            <div class="spbox done">
+                <span th:if="${equipment.warrantyPkgNo} != null" class="sp1" th:text="${equipment.warrantyPkgNo.warrantyPkgContent}"></span>
+                <span th:if="${equipment.warrantyPkgNo} == null and ${equipment.warrantyVisitNo} != null" class="sp1" th:text="${equipment.warrantyVisitNo.warrantyPkgContent}"></span>
+                <div class="itembox">
+                    <span class="sp3">已完成</span>
+                    <span class="arrowsp">
+                         <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                     </span>
+                </div>
+            </div>
+            <div class="format">
+                <div class="imgbox">
+                    <img th:src="@{${equipment.deviceNo.image}+'_03.png'}" style="width:1.74rem;height: 1.75rem;"/>
+                </div>
+                <div class="code1">
+                    <div class="name" th:text="${equipment.deviceNo.type}"></div>
+                    <div class="ordercode1">
+                        <span>订单编号：</span><span class="device_s" th:text="${equipment.warrantyNo}"></span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码：</span><span th:text="${equipment.deviceNo.deviceNo}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间：</span><span class="timesp" th:text="${equipment.orderTimeStr}"></span>
+                </div>
+                <div class="btnbox">
+                <!--     <div class="btn1">
+                        <a href="#">删除订单</a
+                    </div>
+                    <div class="btn3">
+                        <a href="choosewarranty.html">评价订单</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div th:if="${warrantySize} == 0" class="msgstyle">订单空空如也！</div>
+    </div>
+    <!--报修订单部分-->
+    <div class="main_order">
+        <!--报修订单维修中，未评价-->
+        <div class="detail" th:each="equipment,eqStat:${fixList1}">
+            <div class="spbox fix">
+                <span class="sp1">设备报修</span>
+                <div class="itembox">
+                    <span class="sp2">维修中</span>
+                    <span class="arrowsp">
+                         <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                     </span>
+                </div>
+            </div>
+            <div class="format">
+                <div class="imgbox">
+                    <img th:src="@{${equipment.deviceNo.image}+'_03.png'}" style="width:1.74rem;height: 1.75rem;"/>
+                </div>
+                <div class="code1">
+                    <div class="name" th:text="${equipment.deviceNo.type}"></div>
+                    <div class="ordercode1">
+                        <span>订单编号：</span><span class="orderNo fixcode" th:text="${equipment.fixId}"></span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码：</span><span class="deviceNo" th:text="${equipment.deviceNo.deviceNo}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间：</span><span class="timesp" th:text="${equipment.orderTimeStr}"></span>
+                </div>
+                <div class="btnbox">
+                    <!--<div class="btn1">-->
+                        <!--<a href="#">删除订单</a>-->
+                    <!--</div>-->
+                    <div class="evaluate btn2">
+                        <a href="#">评价</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--报修订单维修中，已评价-->
+        <div class="detail" th:each="equipment,eqStat:${fixList4}">
+            <div class="spbox fixEvaluate">
+                <span class="sp1">设备报修</span>
+                <div class="itembox">
+                    <span class="sp2">维修中</span>
+                    <span class="arrowsp">
+                         <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                     </span>
+                </div>
+            </div>
+            <div class="format">
+                <div class="imgbox">
+                    <img th:src="@{${equipment.deviceNo.image}+'_03.png'}" style="width:1.74rem;height: 1.75rem;"/>
+                </div>
+                <div class="code1">
+                    <div class="name" th:text="${equipment.deviceNo.type}"></div>
+                    <div class="ordercode1">
+                        <span>订单编号：</span><span class="orderNo fixevacode" th:text="${equipment.fixId}"></span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码：</span><span th:text="${equipment.deviceNo.deviceNo}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间：</span><span class="timesp" th:text="${equipment.orderTimeStr}"></span>
+                </div>
+                <div class="btnbox">
+                    <!--<div class="btn1">-->
+                        <!--<a href="#">删除订单</a>-->
+                    <!--</div>
+                    <div class="btn2">
+                        <a href="choosewarranty.html">评价</a>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!--报修订单已完成，未评价-->
+        <div class="detail" th:each="equipment,eqStat:${fixList3}">
+            <div class="spbox fixdone">
+                <span class="sp1">设备报修</span>
+                <div class="itembox">
+                    <span class="sp3">已完成</span>
+                    <span class="arrowsp">
+                         <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                     </span>
+                </div>
+            </div>
+            <div class="format">
+                <div class="imgbox">
+                    <img th:src="@{${equipment.deviceNo.image}+'_03.png'}" style="width:1.74rem;height: 1.75rem;"/>
+                </div>
+                <div class="code1">
+                    <div class="name" th:text="${equipment.deviceNo.type}"></div>
+                    <div class="ordercode1">
+                        <span>订单编号：</span><span class="orderNo donecode" th:text="${equipment.fixId}"></span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码：</span><span class="deviceNo" th:text="${equipment.deviceNo.deviceNo}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间:</span><span class="timesp" th:text="${equipment.orderTimeStr}"></span>
+                </div>
+                <div class="btnbox">
+                    <!--<div class="btn1">-->
+                        <!--<a href="#">删除订单</a>-->
+                    <!--</div>-->
+                    <div class="evaluate btn3">
+                        <a href="#">评价订单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--报修订单已完成，已评价-->
+        <div class="detail" th:each="equipment,eqStat:${fixList2}">
+            <div class="spbox fixover">
+                <span class="sp1">设备报修</span>
+                <div class="itembox">
+                    <span class="sp3">已完成</span>
+                    <span class="arrowsp">
+                         <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                     </span>
+                </div>
+            </div>
+            <div class="format">
+                <div class="imgbox">
+                    <img th:src="@{${equipment.deviceNo.image}+'_03.png'}" style="width:1.74rem;height: 1.75rem;"/>
+                </div>
+                <div class="code1">
+                    <div class="name" th:text="${equipment.deviceNo.type}"></div>
+                    <div class="ordercode1">
+                        <span>订单编号：</span><span class="orderNo overcode" th:text="${equipment.fixId}"></span>
+                    </div>
+                    <div class="eqcode1">
+                        <span>设备编码：</span><span th:text="${equipment.deviceNo.deviceNo}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="handle">
+                <div class="time">
+                    <span>下单时间：</span><span class="timesp" th:text="${equipment.orderTimeStr}"></span>
+                </div>
+                <div class="btnbox">
+                    <!--<div class="btn1">-->
+                        <!--<a href="#">删除订单</a>-->
+                    <!--</div>-->
+                    <!--<div class="btn3">-->
+                        <!--<a href="estimate.html">评价订单</a>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+        <div th:if="${fixSize} == 0" class="msgstyle">订单空空如也！</div>
+    </div>
+    <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/myorder.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>设备输入</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/inputpage.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <!--<div class="header">-->
+    <!--</div>-->
+    <div class="main">
+        <div class="onex">
+          <div class="main_img">
+              <img src="/image/inputpage/logo2.png" style="width: 1.42rem;height: 0.68rem;"/>
+          </div>
+          <div class="weui-cells cellsbox">
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <img src="/image/registerpage/4.png" class="weui-label" style="width: 0.94rem;height: 0.94rem;"/>
+                </div>
+                <div class="weui_cell_bd">
+                   <input id="equipmentNo1" class="weui-input inputlength" type="text"  placeholder="请输入设备编码"/>
+               </div>
+             </div>
+        </div>
+       </div>
+        <div class="weui-cells zhucebt">
+            <a href="#" class="weui-btn weui-btn_warn">提交</a>
+        </div>
+    </div>
+    <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/inputfix.js"></script>
+</body>
+</html>

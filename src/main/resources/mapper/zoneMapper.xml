@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.ZoneMapper">
+	<resultMap type="com.nfet.icare.pojo.Province" id="ProvinceResultMap">
+		<id column="uid" property="uid"/>
+		<result column="province_id" property="provinceId"/>
+		<result column="province_name" property="provinceName"/>
+	</resultMap>
+	
+	<resultMap type="com.nfet.icare.pojo.City" id="CityResultMap">
+		<id column="uid" property="yid"/>
+		<result column="city_id" property="cityId"/>
+		<result column="city_name" property="cityName"/>
+	</resultMap>
+	
+	<resultMap type="com.nfet.icare.pojo.Area" id="AreaResultMap">
+		<id column="uid" property="uid"/>
+		<result column="area_id" property="areaId"/>
+		<result column="area_name" property="areaName"/>
+	</resultMap>
+	
+	<sql id="provinceList">
+		province_id,province_name
+	</sql>
+	<sql id="cityList">
+		city_id,city_name
+	</sql>
+	<sql id="areaList">
+		area_id,area_name
+	</sql>
+	
+	<!-- 查询省份列表 -->
+	<select id="provinceList" resultMap="ProvinceResultMap">
+		SELECT
+		<include refid="provinceList" />
+		FROM conf_province
+	</select>
+	
+	<!-- 查询城市列表 -->
+	<select id="cityList" resultMap="CityResultMap" parameterType="java.lang.Integer">
+		SELECT
+		<include refid="cityList" />
+		FROM conf_city where province_id = #{provinceId}
+	</select>
+	
+	<!-- 查询地区列表 -->
+	<select id="areaList" resultMap="AreaResultMap" parameterType="java.lang.Integer">
+		SELECT 
+		<include refid="areaList" />
+		FROM conf_area where city_id = #{cityId}
+	</select>
+	
+	<!-- 查询省份名称 -->
+	<select id="queryProvinceName" parameterType="java.lang.Integer" resultType="java.lang.String">
+		SELECT province_name
+		FROM conf_province
+		<where>
+			province_id = #{provinceId}
+		</where>
+	</select>
+	
+	<!-- 查询城市名称 -->
+	<select id="quertCityName" parameterType="java.lang.Integer" resultType="java.lang.String">
+		SELECT city_name
+		FROM conf_city
+		<where>
+			city_id = #{cityId}
+		</where>
+	</select>
+	
+	<!-- 查询地区名称 -->
+	<select id="queryAreaName" parameterType="java.lang.Integer" resultType="java.lang.String">
+		SELECT area_name
+		FROM conf_area
+		<where>
+			area_id = #{areaId}
+		</where>
+	</select>
+</mapper> 

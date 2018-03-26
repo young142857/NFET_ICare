@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<link th:href="@{../bootstrap/css/bootstrap.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div
+		style="width: 600px; height: 400px; padding-top: 50px; padding-left: 30px; font-size: 15px;">
+
+		<span>用户信息：</span><br /> openid:<span th:text="${snsUserInfo.openId}"></span><br />
+		name:<span th:text="${snsUserInfo.nickname}"></span><br /> <img
+			th:src="@{${snsUserInfo.headImgUrl}}" width="128" height="128" /><br />
+		<br />
+		<button id="scan_forward" type="button" class="btn btn-success">跳转到扫码页面</button>
+	</div>
+
+	<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+
+	<script th:inline="javascript">
+	　　$("#scan_forward").click(function(){
+			//window.location.href="http://m.e-is.cn/icare1/wxjs/scan";
+	    	window.location.href="http://m.e-is.cn/icare1/pay.html";
+	　　}); 
+	</script>
+</body>
+</html>

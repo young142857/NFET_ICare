@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>确认订单</title>
+    <!--项目页面css共同样式-->
+    <link rel="stylesheet" href="/css/common.css"/>
+    <!--页面css样式-->
+    <link rel="stylesheet" href="/css/deferredorder.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <!--页面顶部，产品图片部分-->
+    <div class="header">
+            <div class="headbox">
+                <div class="items">
+                     <div class="headimg">
+                          <img th:src="@{${map.image}+'_02.png'}" style="width: 1.87rem;height: 1.86rem;"/>
+                     </div>
+                     <div class="namecode">
+                          <div class="name"><span th:text="${map.model}"></span></div>
+                          <div class="code">
+                              <span class="codesp1">设备编码：</span><span id="deviceNo" th:text="${map.deviceNo}"></span>
+                  			  <span id="warrantyNo" style="display:none" th:text="${map.warrantyNo}"></span>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    <!--页面主体，产品订单信息-->
+    <div class="main">
+        <div class="item_special"><span class="item_sp1">针式打印机延保</span><span class="item_sp2"></span></div>
+        <ul class="mainlist_1">
+                <li class="item_8" th:if="${map.pkgType} != ''"><span>延保套餐</span><div class="libox"><span th:text="${map.pkgType}"></span><span class="item_9" th:text="|&yen;${map.pkgPrice}|"></span></div></li>
+                <li class="item_8" th:if="${map.visitType} != ''"><span>上门服务卡</span><div class="libox"><span th:text="${map.visitType}"></span><span class="item_9" th:text="|&yen;${map.visitPrice}|"></span></div></li>
+        </ul>
+        <div class="item_3"><span>延保金额：</span><span th:text="|&yen;${map.payAmt}|"></span></div>
+        <div class="item_4"><span>优惠券：</span><span>-&yen;0</span></div>
+        <div class="item_5"><span class="item_sp1">实付金额：</span><span class="item_sp2" th:text="|&yen;${map.payAmt}|"></span></div>
+    </div>
+    <!--页面底部按钮-->
+    <div class="foot">
+            <div class="btn1">
+                <span class="btn_sp1">实付款</span>
+                <span class="btn_sp2" id="amount" th:text="|&yen;${map.payAmt}|"></span>
+            </div>
+            <div class="btn2" id="pay_confirm"><a href="#">支付</a></div>
+    </div>
+	<!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/establishdorder.js"></script>
+</body>
+</html>

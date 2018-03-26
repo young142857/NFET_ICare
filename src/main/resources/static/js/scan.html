@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>扫码设备</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<link th:href="@{../bootstrap/css/bootstrap.css}" rel="stylesheet" />
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body>
+
+	<div
+		style="width: 600px; height: 400px; padding-top: 50px; padding-left: 30px; font-size: 15px;">
+
+<!--  		<p th:text="${nonceStr}">nonceStr</p>
+		<br />
+		<p th:text="${timestamp}">timestamp</p>
+		<br />
+		<p th:text="${signature}">signature</p>
+
+		<button id="wx_scan" type="button" class="btn btn-success">扫码</button>
+		<button id="wx_pay_redirect" type="button" class="btn btn-success">跳转支付</button> -->
+	</div>
+
+	<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/wx.js}"></script>
+
+	<script th:inline="javascript">
+		var nonceStr = [[${nonceStr}]];
+		var timestamp = [[${timestamp}]];
+		var signature = [[${signature}]];
+		
+/* 		var pay_nonceStr = [[${pay_nonceStr}]];
+		var pay_timestamp = [[${pay_timestamp}]];
+		var prepay_id = [[${prepay_id}]];
+		var paySign = [[${paySign}]]; */
+		
+		wx.config({
+		      debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		      appId: "wxb3b870cc433e0099", // 必填，公众号的唯一标识
+		      timestamp: timestamp, // 必填，生成签名的时间戳
+		      nonceStr: nonceStr, // 必填，生成签名的随机串
+		      signature: signature,// 必填，签名，见附录1
+		      jsApiList: ['scanQRCode'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		  });
+		
+	</script>
+</body>
+</html>

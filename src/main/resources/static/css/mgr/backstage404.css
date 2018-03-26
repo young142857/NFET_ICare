@@ -1,0 +1,26 @@
+.main-error{
+    background: #ececec;
+    width: 1366px;
+    height: 835px;
+    clear: both;
+    padding-top:210px;
+}
+
+.errorpage{
+    background: url("../../image/images/404/bg.png");
+    width: 850px;
+    height: 395px;
+    margin: 0 auto;
+    padding-top: 300px;
+}
+.backbtn{
+    background: url("../../image/images/404/1.png") no-repeat center;
+    width: 202px;
+    height: 46px;
+    margin: 0 auto;
+    display: block;
+}
+
+.backbtn:hover{
+    background: url("../../image/images/404/2.png") no-repeat center;
+}

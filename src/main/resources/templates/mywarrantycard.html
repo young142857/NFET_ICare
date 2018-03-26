@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>我的保修卡</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/mywarrantycard.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!--页面导航条-->
+        <div class="weui-navbar">
+            <div id="btn1" class="weui-navbar__item ">
+                保修卡号
+            </div>
+            <div id="btn2" class="weui-navbar__item weui-bar__item_on">
+                设备编码
+            </div>
+            <div id="btn3" class="weui-navbar__item"> 
+                保修截止日期
+            </div>
+        </div>
+    </div>
+    <!--页面主体-->
+    <!--我的保修卡-->
+    <div class="main">
+        <!--保修卡号页面-->
+            <div class="warrantycard1" th:each="ecard,eqStat:${ecardList1}">
+                <!--卡片上各项-->
+                <div class="warrantyitem_1"><img src="/image/mycard/logo.png"/></div>
+                <div class="info">
+                    <div class="infoitem_1">
+                        <div class="infoitem_1s">
+                            <div class="warrantyitem_2">设备编码：<span class="spCode" th:text="${ecard.deviceNo.deviceNo}"></span></div>
+                            <div class="warrantyitem_3"><span th:text="${ecard.deviceNo.type}"></span></div>
+                        </div>
+                        <div th:if="${ecard.leftDate} != 0" class="warrantyitem_5"><span  class="days" th:text="${ecard.leftDate}"></span></div>
+                        <div th:if="${ecard.leftDate} == 0" class="warrantyitem_5s"><span class="days" th:text="${ecard.leftDate}"></span></div>
+                    </div>
+                    <div class="warrantyitem_4">
+                    	<img src="/image/mycard/8.png"/>
+						<div class="codenum" th:text="|NFET${ecard.ecardNum}|"></div>
+                    </div>
+                    <div class="infoitem_2">
+                        <div class="warrantyitem_6"></div>
+                        <div class="warrantyitem_7"><p>保修截止时间：<span th:text="${ecard.warrantTo}"></span></p></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+	<div class="main_a">
+        <!--保修卡号页面-->
+            <div class="warrantycard1" th:each="ecard,eqStat:${ecardList2}">
+                <!--卡片上各项-->
+                <div class="warrantyitem_1"><img src="/image/mycard/logo.png"/></div>
+                <div class="info">
+                    <div class="infoitem_1">
+                        <div class="infoitem_1s">
+                            <div class="warrantyitem_2">设备编码：<span class="spCode" th:text="${ecard.deviceNo.deviceNo}"></span></div>
+                            <div class="warrantyitem_3"><span th:text="${ecard.deviceNo.type}"></span></div>
+                        </div>
+                        <div th:if="${ecard.leftDate} != 0" class="warrantyitem_5"><span class="days" th:text="${ecard.leftDate}"></span></div>
+                        <div th:if="${ecard.leftDate} == 0" class="warrantyitem_5s"><span class="days" th:text="${ecard.leftDate}"></span></div>
+                    </div>
+                    <div class="warrantyitem_4">
+                    	<img src="/image/mycard/8.png"/>
+						<div class="codenum" th:text="|NFET${ecard.ecardNum}|"></div>
+                    </div>
+                    <div class="infoitem_2">
+                        <div class="warrantyitem_6"></div>
+                        <div class="warrantyitem_7"><p>保修截止时间：<span th:text="${ecard.warrantTo}"></span></p></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+	<div class="main_b">
+        <!--保修卡号页面-->
+            <div class="warrantycard1" th:each="ecard,eqStat:${ecardList3}">
+                <!--卡片上各项-->
+                <div class="warrantyitem_1"><img src="/image/mycard/logo.png"/></div>
+                <div class="info">
+                    <div class="infoitem_1">
+                        <div class="infoitem_1s">
+                            <div class="warrantyitem_2">设备编码：<span class="spCode" th:text="${ecard.deviceNo.deviceNo}"></span></div>
+                            <div class="warrantyitem_3"><span th:text="${ecard.deviceNo.type}"></span></div>
+                        </div>
+                        <div th:if="${ecard.leftDate} != 0" class="warrantyitem_5"><span class="days" th:text="${ecard.leftDate}"></span></div>
+                        <div th:if="${ecard.leftDate} == 0" class="warrantyitem_5s"><span class="days" th:text="${ecard.leftDate}"></span></div>
+                    </div>
+                    <div class="warrantyitem_4">
+                    	<img src="/image/mycard/8.png"/>
+						<div class="codenum" th:text="|NFET${ecard.ecardNum}|"></div>
+                    </div>
+                    <div class="infoitem_2">
+                        <div class="warrantyitem_6"></div>
+                        <div class="warrantyitem_7"><p>保修截止时间：<span th:text="${ecard.warrantTo}"></span></p></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div th:if="${ecardSize} == 0" class="msgstyle">您还没有保修卡诶，绑定设备才有保修卡哦！</div>    
+</div>
+<script src="/js/mywarrantycard.js"></script>
+</body>
+</html>

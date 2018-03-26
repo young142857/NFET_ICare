@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<title>Sample for sms</title>
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap.css">
+<script src="js/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="padding-left: 10px;">
+
+		<form role="form">
+			<div class="form-group">
+				<label for="name">手机号码</label> <input type="text"
+					class="form-control" id="phone_no" placeholder="请输入手机号">
+			</div>
+
+			
+		</form>
+		<button id="sb_btn" class="btn btn-default">提交</button>
+	</div>
+
+	<script>
+		$("#btn1").click(function() {
+			var rq_url = "/sms/" + $("#phonenum").val();
+			console.log(rq_url);
+			$.ajax({
+				url : rq_url,
+				type : 'GET', //GET
+				timeout : 5000, //超时时间
+				dataType : 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+				success : function(data, textStatus, jqXHR) {
+					console.log(data);
+					console.log(textStatus);
+					console.log(jqXHR);
+				},
+				error : function(xhr, textStatus) {
+					console.log('错误');
+					console.log(xhr);
+					console.log(textStatus);
+				},
+				complete : function() {
+					console.log('结束');
+				}
+			})
+		});
+	</script>
+</body>
+</html>

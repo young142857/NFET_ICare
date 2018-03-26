@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>我的保修卡</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/myWarrantycard.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!--页面导航条-->
+        <div class="weui-navbar">
+            <div class="weui-navbar__item weui-bar__item_on btn1">
+                保修卡号
+            </div>
+            <div class="weui-navbar__item btn2">
+                设备编码
+            </div>
+            <div class="weui-navbar__item btn3">
+                保修期截止
+            </div>
+        </div>
+    </div>
+    <!--页面主体-->
+    <!--我的保修卡-->
+       <div class="mywarrntycard">
+        <!--保修卡号页面-->
+        <div class="codepage">
+            <div class="warrantycard1" id="warranty">
+                <!--卡片上各项-->
+                <div class="warrantyitem_1"><img src="image/mycard/logo.png"></div>
+                <div class="info">
+                    <div class="infoitem_1">
+                        <div class="infoitem_1s">
+                            <div class="warrantyitem_2">编码：1223445678</div>
+                            <div class="warrantyitem_3">DKP240T</div>
+                        </div>
+                        <div class="warrantyitem_5"><span>1512</span></div>
+                    </div>
+                    <div class="warrantyitem_4"><img src="image/mycard/code.png"></div>
+                    <div class="infoitem_2">
+                        <div class="warrantyitem_6"><p>保修期:1年</p></div>
+                        <div class="warrantyitem_7"><p>保修结束日期:2028-01-01</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="warrantycard2"  id="warranty1">
+                <!--卡片上各项-->
+                <div class="warrantyitem_1"><img src="image/mycard/logo.png"></div>
+                <div class="info">
+                    <div class="infoitem_1">
+                        <div class="infoitem_1s">
+                            <div class="warrantyitem_2">编码：1223445678</div>
+                            <div class="warrantyitem_3">DKP240T</div>
+                        </div>
+                        <div class="warrantyitem_5"><span>1512</span></div>
+                    </div>
+                    <div class="warrantyitem_4"><img src="image/mycard/code.png"></div>
+                    <div class="infoitem_2">
+                        <div class="warrantyitem_6"><p>保修期:1年</p></div>
+                        <div class="warrantyitem_7"><p>保修结束日期:2028-01-01</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="warrantycard3"  id="warranty2">
+                <!--卡片上各项-->
+                <div class="warrantyitem_1s"><img src="image/mycard/suntalklogo.png"></div>
+                <div class="info">
+                    <div class="infoitem_1">
+                        <div class="infoitem_1s">
+                            <div class="warrantyitem_2">编码：1223445678</div>
+                            <div class="warrantyitem_3">DKP240T</div>
+                        </div>
+                        <div class="warrantyitem_5s"><span>0</span></div>
+                    </div>
+                    <div class="warrantyitem_4"><img src="image/mycard/code.png"></div>
+                    <div class="infoitem_2">
+                        <div class="warrantyitem_6"><p>保修期:1年</p></div>
+                        <div class="warrantyitem_7"><p>保修结束日期:2028-01-01</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--我的设备-->
+        <div class="myequipment">
+        <div class="equipment_box">
+            <div class="myequipment_model" id="equipment1">
+                <span class="model_p1">产品型号</span>
+                <span class="model_p2">DKP800&nbspPRO</span>
+            </div>
+            <div class="myequipment_code">
+                <ul class="codelist">
+                    <li class="code_model"><span>产品编码:</span><span>VIN411413412344</span></li>
+                    <li class="code_model"><span>添加时间:</span><span>2017年5月10日</span></li>
+                    <li class="code_model"><span>保修截止时间:</span><span>2018年5月10日</span></li>
+                </ul>
+            </div>
+            <div class="myequipment_btn">
+                <span class="btn1"><a href="onlinerepair.html">报修</a></span>
+                <b class="line"></b>
+                <span class="btn2"><a href="onlineextendedwarranty.html">延保</a></span>
+            </div>
+        </div>
+        <div class="equipment_box">
+            <div class="myequipment_model" id="equipment">
+                <span class="model_p1">产品型号</span>
+                <span class="model_p2">DKP800&nbspPRO</span>
+            </div>
+            <div class="myequipment_code">
+                <ul class="codelist">
+                    <li class="code_model"><span>产品编码:</span><span>VIN411413412344</span></li>
+                    <li class="code_model"><span>添加时间:</span><span>2017年5月10日</span></li>
+                    <li class="code_model"><span>保修截止时间:</span><span>2018年5月10日</span></li>
+                </ul>
+            </div>
+            <div class="myequipment_btn">
+                <span class="btn1"><a href="#">维修中</a></span>
+                <b class="line"></b>
+                <span class="btn2"><a href="onlineextendedwarranty.html">延保</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/mywarrantycard.js"></script>
+</body>
+</html>

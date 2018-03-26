@@ -1,0 +1,66 @@
+.main{
+    height: 1124px
+}
+
+.dorpdown{
+    height: 1104px;
+}
+.chart{
+    float: right;
+    background: #ffffff;
+    margin-right: 20px;
+    margin-top:20px;
+    padding-top: 20px;
+    height: 532px;
+}
+.linechart{
+    width: 1106px;
+    height: 532px;
+    float: left;
+}
+
+.datatable{
+    height: 532px;
+}
+
+
+.pie{
+    float: right;
+    background: #ffffff;
+    margin-right: 20px;
+    margin-top:20px;
+    padding-top: 20px;
+}
+.piechart{
+    width: 553px;
+}
+.piechartx{
+    width: 626px;
+}
+
+.piechart,.piechartx{
+    height: 512px;
+    float: left;
+    padding: 0 20px;
+}
+.piecharttable{
+    width: 480px;
+    height: 512px;
+    float: left;
+    padding: 80px 20px;
+}
+
+.col-sm-6{
+    float: none;
+    width: 22%;
+}
+
+.search-btn{
+    margin-top: 1.5px;
+}
+.table-bordered>thead>tr>th {
+    text-align: center;
+}
+#warratytable>tbody>tr:last-child{
+    color:red;
+}

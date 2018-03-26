@@ -1,0 +1,176 @@
+body{
+    background: #F7F7F7;
+}
+.headbox{
+    height: 2.14rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.2rem 0;
+    padding: 0 0.3rem;
+}
+.items{
+    display: flex;
+}
+.imgbox{
+    width: 1.74rem;
+    height: 1.74rem;
+}
+.now{
+    display: flex;
+    flex-direction: column;
+    padding:0.1rem 0 0 0.3rem;
+}
+.nowsp1{
+    font-size: 0.22rem;
+    color:#999999;
+}
+.nowsp2{
+    font-size: 0.4rem;
+    color: #E64340;
+    margin-top: 0.15rem;
+    margin-bottom: 0.12rem;
+}
+.ordercode{
+    font-size: 0.22rem;
+    color: #404040;
+    margin-top: 0.12rem;
+}
+.imgarrow{
+    width: 1.26rem;
+    height: 0.25rem;
+}
+.slider{
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    height: 1.4rem;
+    padding: 0.3rem;
+}
+.slibox{
+    height: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+.slidersp1,.slidersp2{
+    font-size: 0.3rem;
+}
+.slidersp1{
+    color: #404040;
+}
+.slidersp2{
+    color: #E64340;
+}
+.imgslider{
+    width:5.96rem;
+    height: 0.24rem;
+    display: flex;
+    align-self: center;
+    margin-top: 0.2rem;
+}
+.red,.redwt1,.redwt2,.redwt3,.redwt4{
+    height: 0.06rem;
+    align-self: center;
+}
+.redwt1{
+    width: 20%;
+}
+.redwt2{
+    width: 40%;
+}
+.redwt3{
+    width: 65%;
+}
+.redwt4{
+    width: 95%;
+}
+.bull{
+    width: 0.24rem;
+    height: 0.24rem;
+}
+.ws{
+    background: url("../image/orderstatus/5.png") no-repeat center;
+    background-size: 5.87rem 0.06rem;
+    width: 5.87rem;
+    height: 0.24rem;
+    display: flex;
+    align-content: center;
+}
+.mainbox{
+    display: flex;
+    justify-content: center;
+    padding:0.3rem 0.3rem 0;
+}
+.mainbox,.leftbox,.date,.data,.rightbox{
+    height:7.2rem;
+}
+.dateli{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 1.39rem;
+    height: 1rem;
+    margin-top: 0.55rem;
+}
+.datesptime_one,.datesptime_two,.datesptime_three,.datesptime_four{
+    font-size: 0.22rem;
+    color: #b3b3b3;
+}
+.datespdate_one,.datespdate_two,.datespdate_three,.datespdate_four{
+    font-size:0.3rem;
+    color: #999999;
+}
+.datesp1{
+    font-size: 0.22rem;
+    color: #666666;
+}
+.datesp2,.spanbox,.schedule{
+    font-size:0.3rem;
+    color: #404040;
+}
+.schedule{
+    height: 0.5rem;
+    padding-left: 0.3rem;
+    padding-top: 0.3rem;
+}
+.datali{
+    display: flex;
+    height: 1rem;
+    margin-top: 0.55rem;
+
+}
+.spanbox{
+    display: flex;
+    flex-direction: column;
+}
+.status_one,.status_two,.status_three,.status_four{
+    display: flex;
+    flex-direction: column;
+    font-size:0.3rem;
+    color: #999999;
+}
+
+.middle{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    background: url("../image/orderstatus/12.png") no-repeat center;
+    background-size:0.02rem 7.2rem;
+    width: 0.22rem;
+    height: 7.2rem;
+    margin: 0 0.22rem;
+}
+
+.note1,.note2,.note3,.note4,.notex{
+    display: flex;
+    align-self: center;
+    width: 0.22rem;
+    height: 0.22rem;
+}
+.note1{
+    margin-top: 0.7rem;
+}
+
+.note2,.note3,.note4,.notex{
+    margin-top: 1.35rem;
+}
+

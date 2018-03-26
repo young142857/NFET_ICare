@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>延保选择</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/choosewarrynty.css">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/fontsize.js"></script>
+    <script src="js/pay.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="topbox">
+            <ul class="toplist">
+                <li class="imgli">
+                    <span class="imgsp">
+                        <img src="image/repairorder/图标.png" style="width: 1.24rem;height: 1.24rem;">
+                    </span><span class="imgsp1">DKP&nbsp;23801</span>
+                </li>
+                <li class="textli">
+                    <div class="info">
+                    <div class="d1">
+                        <span class="textsp1">产品名称</span>
+                        <span class="textsp2">票据打印机</span>
+                    </div>
+                    <div class="d2">
+                        <span class="textsp1">产品编号</span>
+                        <span class="textsp2">VIN238413413415</span>
+                    </div>
+                    </div>
+                    <div class="d3">
+                        <span class="textsp1">报修期限</span>
+                        <span class="textsp2">2015年05月01日--2017年05月01日</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="shadow"><img src="image/repairorder/背景填充.png" style="height: 0.1rem"></div>
+    </div>
+    <div class="main">
+        <div class="main_d">
+            <span class="main_sp">延保套餐选择</span>
+        </div>
+        <div class="weui-cells weui-cells_checkbox checkbox">
+            <label class="weui-cell weui-check__label checklab" for="s11">
+                <div class="weui-cell__hd">
+                    <input type="radio" class="weui-check" name="checkbox1" id="s11" checked="checked">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p class="bd_p1">80系列针打延保一年服务卡</p>
+                    <p class="bd_p2">延保期至:2019年01月02日</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <div class="ft_d1">&yen;300</div>
+                    <div class="ft_d2">&yen;0.01</div>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label checklab" for="s12">
+                <div class="weui-cell__hd">
+                    <input type="radio" name="checkbox1" class="weui-check" id="s12">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p class="bd_p1">80系列针打延保一年服务卡</p>
+                    <p class="bd_p2">延保期至:2019年01月02日</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <div class="ft_d1">&yen;300</div>
+                    <div class="ft_d2">&yen;145</div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footbtn">
+            <div class="btn1">实付款:<span>&yen;0.01</span></div>
+            <a><div id="pay_confirm" class="btn2">确定</div></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 0.14rem;
+}
+#container{
+    width: 100%;
+}
+#radio_box{
+    width:3rem;
+    height: 2rem;
+    margin: 0 auto;
+    margin-bottom: -1rem;
+}
+
+.ptbox{
+    margin-top: 0.4rem;
+}
+.radiobt{
+    font-size:0.18rem;
+    font-family: 'ArialMT', 'Arial';
+    float: left;
+}
+#equipment_box {
+    width: 3rem;
+    height: 4rem;
+    border:0.01rem solid;
+    margin: 0 auto;
+}
+.equipment_one{
+    width: 2.2rem;
+    height: 2rem;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 0.8rem;
+}
+
+.equipment_one > input, .equipment_more>input{
+    width:2rem;
+    height: 0.5rem;
+    margin:0 auto;
+    text-align: center;
+    outline: none;
+}
+.equipment_more{
+    width: 2.2rem;
+    height: 2rem;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 0.8rem;
+    display: none;
+}
+.equipment_more>h1{
+   position: relative;
+    left:1rem;
+}
+.one_subnitbt{
+    width: 1.8rem;
+    margin:0 auto;
+    padding-top: 0.5rem;
+}
+

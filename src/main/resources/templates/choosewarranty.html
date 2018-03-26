@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>延保选择</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/choosewarrynty.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="topbox">
+            <ul class="toplist">
+                <li class="imgli">
+                    <span class="imgsp">
+                        <img th:src="@{${device.deviceNo.image}+'_05.png'}" style="width: 1.24rem;height: 1.24rem;"/>
+                    </span><span class="imgsp1" th:text="${device.deviceNo.type}"></span>
+                </li>
+                <li class="textli">
+                    <div class="info">
+                    <div class="d1">
+                        <span class="textsp1">产品名称</span>
+                        <span class="textsp2" th:text="${device.deviceNo.name}"></span>
+                    </div>
+                    <div class="d2">
+                        <span class="textsp1">设备编号</span>
+                        <span id="deviceNo" class="textsp2" th:text="${device.deviceNo.deviceNo}"></span>
+                    </div>
+                    </div>
+                    <div class="d3">
+                        <span class="textsp1">保修期限</span>
+                        <span class="textsp2" th:text="|${device.warrantFrom}--${device.warrantTo}|"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="shadow"><img src="/image/repairorder/2.png" style="height: 0.1rem"/></div>
+    </div>
+    <div class="main_first">
+        <div class="weui-cells weui-cells_checkbox checkbox">
+            <span class="weui-cell main_sp">延保套餐选择</span>
+            <label class="weui-cell weui-check__label checklab1"  th:each="pkg,p:${warrantyPkgList}">
+                <div class="weui-cell__hd">
+                    <input type="radio" class="weui-check" name="checkbox1"/>
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p class="bd_p1" th:text="${pkg.warrantyPkgContent}"></p>
+                    <p class="bd_p2">延保期至：<span class="data" th:text="${pkg.warrantTo}"></span></p>
+                </div>
+                <div class="weui-cell__ft">
+                    <div th:if="${pkg.warrantyPkgPrice} == 89" class="ft_d1">&yen;100</div>
+                    <div th:if="${pkg.warrantyPkgPrice} == 100" class="ft_d1">&yen;120</div>
+                    <div th:if="${pkg.warrantyPkgPrice} == 139" class="ft_d1">&yen;150</div>
+                    <div th:if="${pkg.warrantyPkgPrice} == 300" class="ft_d1">&yen;320</div>
+                    <div th:if="${pkg.warrantyPkgPrice} == 114" class="ft_d1">&yen;130</div>
+                    <div th:if="${pkg.warrantyPkgPrice} == 164" class="ft_d1">&yen;180</div>
+                    <div th:if="${pkg.warrantyPkgPrice} == 189" class="ft_d1">&yen;200</div>
+                    <div class="ft_d2" th:text="|&yen;${pkg.warrantyPkgPrice}|"></div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="main_second">
+        <div class="weui-cells weui-cells_checkbox checkbox">
+            <span class="weui-cell main_sp">上门服务卡选择</span>
+            <label class="weui-cell weui-check__label checklab2"  th:each="visit:${warrantyVisitList}">
+                <div class="weui-cell__hd">
+                    <input type="radio" name="checkbox1" class="weui-check" th:if="${visit.warrantyType} != 3"/>
+                    <input type="radio" name="checkbox1" class="weui-check visitcheck" th:if="${visit.warrantyType} == 3"/>
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p class="bd_p1" th:text="${visit.warrantyPkgContent}"></p>
+                    <p class="bd_p2" th:if="${visit.warrantyType} == 3">延保期至：<span class="visitdata" th:text="${visit.warrantTo}"></span></p>
+                    <p class="bd_p2">上门期至：<span th:text="${visit.visitTo}"></span></p>
+                </div>
+                <div class="weui-cell__ft">
+                    <div th:if="${visit.warrantyPkgPrice} == 89" class="ft_d1">&yen;100</div>
+                    <div th:if="${visit.warrantyPkgPrice} == 100" class="ft_d1">&yen;120</div>
+                    <div th:if="${visit.warrantyPkgPrice} == 139" class="ft_d1">&yen;150</div>
+                    <div th:if="${visit.warrantyPkgPrice} == 300" class="ft_d1">&yen;320</div>
+                    <div class="ft_d2" th:text="|&yen;${visit.warrantyPkgPrice}|"></div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footbtn">
+            <div class="btn1">实付款：<span id="pay">&yen;</span></div>
+            <a href="#"><div class="btn2" id="chooseSubBtn">提交订单</div></a>
+        </div>
+    </div>
+	  <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/choosewarranty.js"></script>
+</body>
+</html>

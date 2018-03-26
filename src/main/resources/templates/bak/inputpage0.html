@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>输入界面</title>
+    <link rel="stylesheet" href="/css/weui.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/inputpage.css" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="weui-navbar">
+            <div id="btn1" class="weui-navbar__item weui-bar__item_on">
+                输入单个设备
+            </div>
+            <div id="btn2" class="weui-navbar__item">
+                输入多个设备
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="one">
+          <div class="main_img">
+              <img src="/image/inputpage/logo.png" style="width: 7.5rem;height: 0.68rem;" />
+          </div>
+          <div class="weui-cells cellsbox">
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <img src="/image/注册会员/4.png"  class="weui-label" style="width: 0.94rem;height: 0.94rem;" />
+                </div>
+                <div class="weui_cell_bd">
+                   <input class="weui-input" type="text"  placeholder="请输入设备编码" />
+               </div>
+             </div>
+        </div>
+       </div>
+        <div class="more">
+            <div class="arrowbox">
+            <div class="arrow">
+                <img src="/image/inputpage/1.png" style="width: 0.15rem;height: 0.25rem;" />
+            </div>
+        </div>
+            <div class="weui-cells cellsbox">
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <img src="/image/注册会员/4.png"  class="weui-label" style="width: 0.94rem;height: 0.94rem;" />
+                </div>
+                <div class="weui_cell_bd">
+                    <input class="weui-input" type="text"  placeholder="请输入设备编码" />
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="weui-cells zhucebt">
+            <a href="shurudefeat" class="weui-btn weui-btn_warn">提交</a>
+        </div>
+    </div>
+</div>
+<script src="/js/inputpage.js"></script>
+</body>
+</html>

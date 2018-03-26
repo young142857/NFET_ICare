@@ -1,0 +1,131 @@
+body{
+    background: #F7F7F7;
+}
+
+.header{
+    height: 2.9rem;
+    background: #FFFFFF;
+}
+.toplist{
+    height: 2.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.imgli{
+    height: 1.68rem;
+    width: 6.9rem;
+    border-bottom: 0.01rem solid #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.imgsp{
+    width: 1.24rem;
+    height: 1.24rem;
+    border-radius: 0.1rem;
+}
+
+.imgsp1{
+    color: #404040;
+    font-size: 0.4rem;
+}
+.textli{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 6.9rem;
+    height: 1.2rem;
+}
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.34rem;
+}
+.d3{
+	display: flex;
+    align-items: center;
+    margin-top: 0.3rem;
+    padding-bottom:0.26rem;
+}
+.textsp1,.textsp2 {
+    font-size: 0.24rem;
+}
+.textsp1,.textsp2{
+    color: #CCCCCC;
+}
+
+.textsp2{
+    color: #999999;
+    margin-left: 0.17rem;
+}
+
+.d1,.d2,.footbtn,.shadow{
+    display: flex;
+}
+
+.shadow{
+    height: 0.1rem;
+}
+.main_sp{
+    font-size: 0.28rem;
+    color: #999999;
+    height: 0.99rem;
+}
+.checkbox{
+    margin-top: 0.25rem;
+}
+.checklab{
+    height: 1.52rem;
+    border-bottom: 0;
+}
+.bd_p1{
+    font-size: 0.32rem;
+    color:#000000;
+}
+.bd_p2,.ft_d1{
+    font-size:0.24rem;
+    color:#999999;
+}
+
+.ft_d1{
+    text-decoration:line-through;
+}
+.ft_d2{
+    font-size: 0.44rem;
+    color: #E64340;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    z-index: 100000;
+}
+.btn1{
+    font-size:0.22rem;
+    color: #404040;
+    background: #e6e6e6;
+    width: 4.75rem;
+    padding-left: 2.5rem;
+}
+.btn1>span{
+    font-size: 0.32rem;
+    color: #E64340;
+    margin-left: 0.15rem;
+}
+.btn2{
+    background: #E64340;
+    color:#FFFFFF;
+    font-size: 0.32rem;
+    width: 2.74rem;
+    text-align: center;
+}
+.btn1,.btn2{
+    height: 1rem;
+    padding-top: 0.35rem;
+}
+
+.main_second{
+    margin-bottom:2.4rem;
+}

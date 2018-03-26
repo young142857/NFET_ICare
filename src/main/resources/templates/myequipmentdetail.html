@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>设备详情</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/myequipemntdetail.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--页面顶部，图片部分-->
+    <div class="header">
+        <div class="bigimg">
+            <img th:src="@{${deviceMap.image}+'_01.png'}" style="width: 3.8rem;height: 3.8rem;"/>
+        </div>
+        <!--红包动图-->
+        <img th:if="${deviceMap.status} == 0" id="redpacket" class="redpacket" src="image/myequipmentdetail/redpacket.gif" style="width: 1.1rem;height: 0.83rem;"/>
+        <div class="dot"><img src="/image/myequipmentdetail/4.png" style="width: 0.5rem;height: 0.06rem;"/></div>
+    </div>
+    <!--产品信息部分，查看保修-->
+    <div class="main">
+        <div class="listbox">
+            <ul class="mainlist">
+                <li class="codeli"><span class="bigsp" th:text="|FUJITSU ${deviceMap.deviceType}|"></span>
+                    <span class="imgsp">
+                        <a href="#">
+                        <img src="/image/myequipmentdetail/1.png" style="width:2.78rem;height: 0.8rem;"/>
+                        </a>
+                    </span>
+                </li>
+                <li class="ulitem1"><span class="listsp1">设备编码：</span><span id="device" class="listsp2" th:text="${deviceMap.deviceNo}"></span></li>
+                <li class="ulitem2"><span class="listsp1">注册公司：</span><span class="listsp2" th:text="${deviceMap.companyName}"></span></li>
+                <li class="ulitem3"><span class="listsp1">保修状态：</span><span class="listsp2" th:text="${deviceMap.warrantStatus}"></span></li>
+                <li class="ulitem4"><span class="listsp1">保修截止日期：</span><span class="listsp2" th:text="${deviceMap.warrantTo}"></span></li>
+            </ul>
+        </div>
+        <div class="link">
+            <a class="weui-cell weui-cell_access" href="#">
+                <div class="weui-cell__bd">
+                    <p class="bd_p">延保券</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="#">
+                <div class="weui-cell__bd">
+                    <p class="bd_p">详细参数</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--页面底部按钮-->
+    <div class="footer">
+        <div class="twobtn">
+            <div th:if="${deviceMap.deviceStatus} == 0" class="btn1"><a href="#">报修</a></div>
+            <div th:if="${deviceMap.deviceStatus} == 1" class="btn3"><a href="#">维修中</a></div>
+            <div class="btn2"><a href="#">延保</a></div>
+        </div>
+    </div>
+	 <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+    <!--BEGIN dialog延保券-->
+    <div class="js_dialog" id="iosDialog3" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">
+                <img src="/image/myequipmentdetail/9.png" style="width: 2.07rem;height: 0.93rem;"/>
+                <div style="font-size: 0.3rem;color: #999999;">保修期延长三个月</div></div>
+                <!-- <span style="color: #f8b551;font-size: 0.4rem; font-weight: bold;">三个月</span> -->
+            <div class="weui-dialog__ft">
+                <a id="user" href="#" class="weui-dialog__btn" style="background: #E64340; color: #FFFFFF">立即使用</a>
+            </div>
+        </div>
+    </div>
+    <!--END dialog延保券-->
+    
+    <!--BEGIN dialog立即领取延保券-->
+	<div class="js_dialog" id="iosDialog2" th:if="${deviceMap.type} == 1">
+	    <div class="weui-mask"></div>
+	    <div class="weui-dialog">
+	        <div class="weui-dialog__hd dialog_hd"><strong class="weui-dialog__title">延保券</strong></div>
+	        <div class="weui-dialog__bd">
+	            <div  class="dialog__bdfst"><span>延保时间</span><span>张数</span></div>
+	            <div class="dialog__bd"><span>三个月</span><span>1</span></div>
+	            <div style="font-size: 0.2rem;color: #CCCCCC; margin-bottom: 0.27rem;">（绑定成功一个设备赠送一张延保券）</div>
+	        </div>
+	        <div class="weui-dialog__ft" style="background: #E64340;">
+	            <a id="now" href="#" class="weui-dialog__btn" style="color: #FFFFFF;">立即领取</a>
+	        </div>
+	    </div>
+	</div>
+	<!--END dialog立即领取延保券-->
+</div>
+<script src="/js/myequipmentdetail.js"></script>
+</body>
+</html>

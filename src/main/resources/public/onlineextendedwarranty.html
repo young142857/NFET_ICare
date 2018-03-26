@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>在线延保</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/onlinebaoxiu.css">
+    <script src="js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <span class="header_sp1">扫描/输入设备的二维码/条形码</span>
+        <span class="header_sp2">如需添加多个设备，请点击输入按钮</span>
+    </div>
+    <div class="main">
+        <div class="scan" onclick="scan()">
+                <div class="item1">
+                    <img src="image/scan/2.png" style="width:0.96rem; height:0.96rem;display: block">
+                </div>
+                <div class="item2">
+                    <span class="item2_sp1" style="font-size: 0.36rem; color: #404040;">扫描</span>
+                    <span class="item2_sp2" style="font-size: 0.28rem;color: #999999;">扫描产品上的二维码</span>
+                </div>
+                <div class="item3"><img src="image/scan/3.png" style="width: 0.16rem;height:0.25rem;"></div>
+        </div>
+        <div class="import" onclick="input()">
+            <div class="item1">
+                <img src="image/scan/1.png" style="width:0.96rem; height:0.96rem;display: block">
+            </div>
+            <div class="item2">
+                <span class="item2_sp1" style="font-size: 0.36rem; color: #404040;">输入</span>
+                <span class="item2_sp2" style="font-size: 0.28rem;color: #999999;">输入产品的设备编码</span>
+            </div>
+            <div class="item3"><img src="image/scan/3.png" style="width: 0.16rem;height:0.25rem;"></div>
+        </div>
+    </div>
+</div>
+<script>
+    function input(){
+        window.location.href="inputpage.html";
+    }
+    function scan(){
+        window.location.href="http://m.e-is.cn/icare1/wxjs/scan";
+    }
+</script>
+</body>
+</html>

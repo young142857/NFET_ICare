@@ -1,0 +1,148 @@
+body{
+    background: #F7F7F7;
+}
+.header{
+    height: 1rem;
+}
+.main_order{
+    display: none;
+}
+.detail{
+    margin-top: 0.2rem;
+}
+.spbox{
+    background: #FFFFFF;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0.88rem;
+    padding: 0 0.3rem;
+}
+
+.sp1,.sp2,.sp3{
+    font-size: 0.3rem;
+}
+.sp1{
+    color: #404040;
+}
+.itembox{
+    display: flex;
+}
+.sp2{
+    color: #E64340;
+}
+.sp3{
+    color: #999999;
+}
+.arrowsp{
+    width: 0.16rem;
+    height: 0.25rem;
+    display: flex;
+    margin-left: 0.3rem;
+}
+.format{
+    height: 1.78rem;
+    margin-top: 0.1rem;
+    display: flex;
+}
+
+.imgbox{
+    width: 1.74rem;
+    height: 1.74rem;
+    margin-left: 0.1rem;
+}
+.code{
+    margin-top: 1.05rem;
+    margin-left: 0.2rem;
+}
+.ordercode,.eqcode{
+    font-size: 0.24rem;
+    color: #999999;
+}
+
+.eqcode{
+    margin-top: 0.1rem;
+}
+.handle{
+    background: #FFFFFF;
+    height: 1.64rem;
+    margin-top: 0.1rem;
+}
+.time{
+    height:0.7rem;
+    border-bottom:0.01rem dashed #CCCCCC;
+    display: flex;
+    justify-content:flex-end;
+    padding-top: 0.26rem;
+    padding-right: 0.3rem;
+}
+.time>span{
+    font-size: 0.24rem;
+    color: #404040;
+}
+.timesp{
+    padding-left: 0.1rem;
+}
+.btnbox{
+    display: flex;
+    height: 0.92rem;
+    justify-content:flex-end;
+    padding-top: 0.15rem;
+    padding-right: 0.3rem;
+}
+
+.btn1,.btn2,.btn3{
+    height: 0.6rem;
+    width: 1.53rem;
+    font-size: 0.26rem;
+    border-radius: 0.1rem;
+    text-align: center;
+    padding-top: 0.16rem;
+}
+.btn1,.btn3{
+    border: 0.01rem solid #999999;
+}
+.btn1>a,.btn3>a{
+    color: #404040;
+}
+.btn2{
+    background: #E64340;
+}
+
+.btn2>a{
+    color: #FFFFFF;
+}
+.btn2,.btn3{
+    margin-left: 0.2rem;
+}
+/*鎴戠殑璁㈠崟鈥斾繚淇鍗�*/
+.main_order{
+    height:15rem;
+}
+.name{
+    font-size: 0.3rem;
+    color:#404040;
+}
+
+.code1{
+    margin-top: 0.24rem;
+    margin-left: 0.2rem;
+}
+.ordercode1,.eqcode1{
+    font-size: 0.24rem;
+    color: #999999;
+}
+.ordercode1{
+    margin-top: 0.6rem;
+}
+.eqcode1{
+    margin-top: 0.1rem;
+}
+
+.msgstyle{
+    color:#999999;
+    font-size: 0.26rem;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 4.8rem;
+}

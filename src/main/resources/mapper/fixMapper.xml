@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.FixMapper">
+	<resultMap type="com.nfet.icare.pojo.Branch" id="BranchResultMap">
+		<id column="uid" property="uid"/>
+		<result column="city_id" property="cityId"/>
+		<result column="city_name" property="cityName"/>
+		<result column="tel_num" property="telNum"/>
+		<result column="leader_name" property="leaderName"/>
+		<result column="phone_num" property="phoneNum"/>
+		<result column="address" property="address"/>
+		<result column="area" property="area"/>
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+	</resultMap>	
+	
+	<sql id="faultList">
+		fix_no,fix_name
+	</sql>
+	
+	<sql id="branch">
+		tel_num,address
+	</sql>
+	
+	<sql id="fix">
+		device_no
+	</sql>
+	
+	<sql id="fixId">
+		status
+	</sql>
+
+	<!-- 获取分公司信息 -->
+	<select id="branchAddress" parameterType="java.lang.String" resultMap="BranchResultMap">
+		SELECT
+		<include refid="branch" />
+		FROM conf_branch
+		<where>
+			city_id = #{cityId}
+		</where>
+	</select>
+	
+	<!-- 增加报修记录 -->
+	<insert id="insertFix" parameterType="com.nfet.icare.pojo.Fix">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        
+		INSERT INTO data_fix
+		(uid,fix_id,device_no,user_no,user_phone,company_name,company_phone,
+		company_industry,fault_name,fix_desc,fix_pattern,province_id,city_id,
+		area_id,address,order_time,create_time,last_modify_time) 
+		VALUES
+		(#{uid,jdbcType=VARCHAR},#{fix.fixId},#{fix.deviceNo.deviceNo},#{fix.userNo},#{fix.userPhone},
+		#{fix.companyName},#{fix.companyPhone},#{fix.companyIndustry},#{fix.faultName},
+		#{fix.fixDesc},#{fix.fixPattern},#{fix.province.provinceId},#{fix.city.cityId},
+		#{fix.area.areaId},#{fix.address},#{fix.orderTime},#{fix.createTime},#{fix.lastModifyTime})
+	</insert>
+	
+	<!-- 更新报修进度 -->
+	<update id="updateFix" parameterType="java.util.Map">
+		UPDATE data_fix
+		<set>
+			<if test="map.status != null and map.status != ''">
+				fix_schedule = #{map.status},
+			</if>
+			<if test="map.lastModifyTime != null">
+				last_modify_time = #{map.lastModifyTime}
+			</if>
+		</set>
+		<where>
+			fix_id = #{map.fixId}
+		</where>
+	</update>
+	
+	<!-- 获取报修信息 -->
+	<select id="fixInfo" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT 
+		<include refid="fix" />
+		FROM data_fix
+		<where>
+			fix_id = #{fixId}
+		</where>
+	</select>
+	
+	<!-- 根据设备编号查询报修单号 -->
+	<select id="queryFixId" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT 
+		<include refid="fixId" />
+		FROM data_device
+		<where>
+			device_no = #{deviceNo}
+		</where>
+		
+	</select>
+</mapper>

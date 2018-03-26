@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.EvaluateMapper">
+	<resultMap type="com.nfet.icare.pojo.Evaluate" id="EvaluateresultMap">
+		<id column="uid" property="uid"/>
+		<result column="evaluate_no" property="evaluateNo"/>
+		<result column="fix_no" property="fixNo"/>
+		<result column="evaluate_device" property="evaluateDevice"/>
+		<result column="evaluate_service" property="evaluateService"/>
+		<result column="evaluate_repair" property="evaluateRepair"/>
+		<result column="evaluate_desc" property="evaluateDesc"/>
+		<result column="evaluate_anonymous" property="evaluateAnonymous"/>
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+	</resultMap>
+	
+	<!-- 查询评价 -->
+	<sql id="evaluate">
+		evaluate_no,fix_no
+	</sql>
+	
+	<!-- 获取最大评价编号 -->
+	<sql id="maxEvaluateNo">
+		max(evaluate_no)
+	</sql>
+	
+	<!-- 查询评价 -->
+	<select id="queryEvaluate" parameterType="java.lang.String" resultMap="EvaluateresultMap">
+		SELECT 
+		<include refid="evaluate" />
+		FROM data_evaluate
+		<where>
+			fix_no = #{fixNo}
+		</where>
+	</select>
+		
+	<!-- 获取最大评价编号 -->
+	<select id="getMaxEvaluateNo" resultType="java.lang.Integer">
+		SELECT 
+		<include refid="maxEvaluateNo" />
+		FROM data_evaluate		
+	</select>
+	
+	<!-- 新增评价 -->
+	<insert id="insertEvaluate" parameterType="com.nfet.icare.pojo.Evaluate">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        
+        INSERT INTO data_evaluate
+        (uid,evaluate_no,fix_no,evaluate_device,evaluate_service,evaluate_repair,
+        evaluate_desc,evaluate_anonymous,create_time,last_modify_time)
+        values(#{uid,jdbcType=VARCHAR},#{evaluate.evaluateNo},#{evaluate.fixNo},
+        #{evaluate.evaluateDevice},#{evaluate.evaluateService},#{evaluate.evaluateRepair},
+        #{evaluate.evaluateDesc},#{evaluate.evaluateAnonymous},#{evaluate.createTime},#{evaluate.lastModifyTime})
+	</insert>
+	
+	
+</mapper>

@@ -1,0 +1,206 @@
+body{
+    background: #f8f8f8;
+}
+.header{
+    height: 0.94rem;
+}
+
+.main_a,.main_b{
+    display: none;
+}
+.codepage{
+    width: 7.5rem;
+}
+
+.headeritem{
+    width:2.5rem;
+    height:1rem;
+    font-size: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.warrantycard1{
+    width: 7.5rem;
+    height: 2.36rem;
+    background: url("../image/mycard/4.png") no-repeat left center;
+    background-size: 7.5rem 2.36rem;
+    padding:0.15rem 0.2rem;
+    display: flex;
+}
+.warrantyitem_1,.warrantyitem_1>img{
+    width: 1.23rem;
+    height:0.61rem;
+    margin-top: 0.35rem;
+}
+.warrantyitem_1s,.warrantyitem_1s>img{
+    width: 1.37rem;
+    height:0.3rem;
+    margin-top: 0.4rem;
+}
+.warrantyitem_1{
+    display: flex;
+    margin-left:0.3rem;
+}
+.warrantyitem_1s{
+    margin-left:0.36rem;
+    text-align: center;
+}
+
+.info{
+    display: flex;
+    flex-direction:column;
+    margin-left: 0.6rem;
+    padding:0.1rem 0;
+}
+.infoitem_1{
+    display: flex;
+    justify-content:space-between;
+    padding-right: 0.3rem;
+}
+
+.infoitem_1s{
+    display: flex;
+    flex-direction:column;
+}
+.warrantyitem_2{
+    height: 0.18rem;
+    font-size: 0.18rem;
+    padding-top: 0.05rem;
+}
+.warrantyitem_3{
+    height: 0.36rem;
+    font-size: 0.36rem;
+    color:#404040;
+    margin-top: 0.14rem;
+}
+.warrantyitem_4{
+    display: flex;
+    margin-top: 0.15rem;
+}
+.warrantyitem_4{
+    width: 4.7rem;
+    height: 0.69rem;
+    flex-direction: column;
+}
+.warrantyitem_4>img{
+    width:4.7rem;
+    height: 0.55rem;
+}
+.codenum{
+    font-size: 0.16rem;
+    color:#333333;
+    text-align: center;
+}
+.warrantyitem_5,.warrantyitem_5s{
+    font-size: 0.25rem;
+    padding-right: 0.2rem;
+    text-align: center;
+    padding-top: 0.1rem;
+}
+.warrantyitem_5{
+	color: #f39700;
+    width: 0.9rem;
+    height: 0.42rem;
+    background: url("../image/mycard/1.png") no-repeat left center;
+    background-size: 0.9rem 0.42rem;
+    margin-left: 0.9rem;
+    padding-top: 0.1rem;
+    padding-right: 0.1rem;
+}
+.warrantyitem_5s{
+    color: #E64340;
+    width: 1.76rem;
+    height: 0.42rem;
+    background: url("../image/mycard/2.png") no-repeat left center;
+    background-size: 1.76rem 0.42rem;
+    margin-left: 0;
+    padding-left: 1rem;
+}
+.infoitem_2{
+    display: flex;
+    justify-content:space-between;
+    padding-right: 0.3rem;
+    margin-top: 0.15rem;
+    width:5rem;
+}
+.warrantyitem_6,.warrantyitem_7{
+    height: 0.18rem;
+    color: #b3b3b3;
+    font-size: 0.18rem;
+}
+/*我的设备样式*/
+.myequipment{
+    display: none;
+}
+.equipment_box{
+    border-top: 0.01rem solid #d1d1d1;
+    background: #ffffff;
+    margin-top:0.25rem;
+    padding-bottom: 0.25rem;
+}
+.myequipment_model{
+    height: 1.15rem;
+    display: flex;
+    justify-content: space-between;
+}
+.model_p1{
+    font-size: 0.3rem;
+    margin-left: 0.3rem;
+}
+.model_p1,.codelist,.btn1{
+   color: #9b9b9b;
+}
+.codelist{
+    font-size: 0.26rem;
+}
+.model_p2{
+    margin-right: 0.3rem;
+    font-size: 0.34rem;
+    color:#404040;
+}
+.model_p1,.model_p2{
+    margin-top: 0.43rem;
+}
+.codelist{
+    margin-left:0.3rem;
+    border-top: 0.01rem solid #D1D1D1;
+}
+
+.codelist>li{
+    margin-right: 0.3rem;
+}
+.code_model{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+}
+.myequipment_btn{
+    height: 1rem;
+    margin-top:0.3rem;
+    border-top: 0.01rem solid #D1D1D1;
+    display: flex;
+    justify-content:center;
+}
+.line{
+    border-left: 0.01rem solid #d1d1d1;
+    margin: 0 1.5rem;
+}
+.btn1,.btn2{
+    font-size: 0.3rem;
+    align-self: center;
+}
+.btn1>a{
+    color:#404040;
+}
+.btn2>a{
+    color:#E64340;
+}
+.msgstyle{
+    color:#999999;
+    font-size: 0.26rem;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 4.8rem;
+}

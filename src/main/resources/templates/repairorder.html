@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>填写报修单</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/repairorder.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="topbox">
+            <ul class="toplist">
+                <li class="imgli">
+                    <span class="imgsp">
+                        <img th:src="@{${device.deviceNo.image}+'_05.png'}" style="width: 1.24rem;height: 1.24rem;"/>
+                    </span><span class="imgsp1" th:text="${device.deviceNo.type}"></span>
+                </li>
+                <li class="textli">
+                    <div class="d1">
+                        <span class="textsp1">产品名称</span>
+                        <span class="textsp2" th:text="${device.deviceNo.name}"></span>
+                    </div>
+                    <div class="d2">
+                        <span class="textsp1">设备编码</span>
+                        <span id="deviceNo" class="textsp2" th:text="${device.deviceNo.deviceNo}"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="shadow"><img src="/image/repairorder/2.png" style="height: 0.1rem"/></div>
+    </div>
+    <div class="main">
+        <div class="mainbox">
+            <span>填写故障信息</span>
+        </div>
+        <div class="weui-cells cells">
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                <label class="weui-label pstyle">故障类型</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="fault" class="weui-select pstyle">
+                        <option value="0">请选择故障类型</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label pstyle">所属行业</label></div>
+                <div class="weui-cell__bd">
+                	<input th:if="${session.company.industry} == null" id="industry" class="weui-input pstyle" type="text" placeholder="请输入所属行业"/>
+                    <input th:if="${session.company.industry} != null" id="industry" class="weui-input pstyle" type="text"  th:value="${session.company.industry}"/>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd">
+                <label class="weui-label pstyle">维修方式</label>
+            </div>
+            <div class="weui-cell__bd">
+                <select class="weui-select pstyle" id="repair">
+                    <option value="0">上门维修</option>
+                    <option value="1">送厂维修</option>
+                </select>
+            </div>
+        </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label class="weui-label pstyle">所在区域</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="province" class="weui-select pstyle">
+                        <!-- <option th:if="${session.company.provinceId} != 0" th:value="${session.company.provinceId}" th:text="${session.zone.province}"></option> -->
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="city" class="weui-select pstyle">
+                        <!-- <option th:if="${session.company.cityId} != 0" th:value="${session.company.cityId}" th:text="${session.zone.city}"></option> -->
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="county" class="weui-select pstyle">
+                        <!-- <option th:if="${session.company.areaId} != 0" th:value="${session.company.areaId}" th:text="${session.zone.area}"></option> -->
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label pstyle">详细地址</label></div>
+                <div class="weui-cell__bd">
+                    <input id="address" class="weui-input pstyle" type="text"  placeholder="请输入详细地址"/>
+                    <!-- <input th:if="${session.company.address} != null" id="address" class="weui-input pstyle" type="text"  th:value="${session.company.address}"/> -->
+                </div>
+            </div>
+       		<div class="weui-cell cellstyle">
+              	（送厂维修时，若选择了所在区域详细地址仍未自动出现，则该地区尚无维修点，请选择其他区域。）
+       		</div>
+        </div>
+    </div>
+    <div class="foot">
+        <div class="footbox">
+        <span class="pstyle">详细描述您遇到的问题</span>
+        <!-- <span class="problem">常见问题？</span> -->
+        </div>
+        <div class="weui-cells weui-cells_form cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea id="desc" class="weui-textarea pstyle" placeholder="请输入文本" rows="1"></textarea>
+                    <div class="weui-textarea-counter areastyle">40字以内</div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells submitbt">
+            <a href="#" class="weui-btn weui-btn_warn">提交</a>
+        </div>
+    </div>
+	<!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/repairorder.js"></script>
+</body>
+</html>

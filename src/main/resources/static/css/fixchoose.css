@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 0.16rem;
+}
+#container{
+    width: 100%;
+}
+.bgtext,.chooselist,.chooselist>ul{
+    width: 3.2rem;
+    margin: 0 auto;
+}.bgtext>h1{
+    text-align: center;
+    margin-top: 1rem;
+ }
+ .chooselist>ul>li{
+     margin-top: 0.2rem;
+     font-size: 0.16rem;
+     width: 3rem;
+ }
+.chooselist>ul>li>a{
+    text-decoration: none;
+    color: #66ccff;
+}

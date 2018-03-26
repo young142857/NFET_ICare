@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>会员中心</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/mydataregistered.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--VIP会员卡各项-->
+    <div class="header">
+            <div class="vipcard">
+                <div class="user">
+                    <div class="item1">
+                       <div class="imgbox">
+                        <img class="userimg" th:src="@{${session.snsUserInfo.headImgUrl}}" style="border-radius: 50%"/>
+                    </div>
+                          <div class="user-info">
+                              <div class="username"><span th:text="${session.snsUserInfo.nickname}"></span></div>
+                              <div class="num"><span th:text="${session.user.phone}"></span></div>
+                              <div class="phonecd"><span th:text="${session.company.companyName}"></span></div>
+                         </div>
+                    </div>
+                    <a href="/page/editdata">
+                      <div class="editdatda">
+                            <img src="/image/mydata/14.png" style="width: 1.07rem;height: 0.24rem;"/>
+                     </div>
+                    </a>
+               </div>
+                <div class="vipcode">
+                    <i><span id="userno" th:text="${session.user.userNo}"></span></i>
+               </div>
+           </div>
+        <!--积分保修卡优惠券各项-->
+        <div class="headlist">
+            <!--积分-->
+            <div class="inteagrl">
+                <div class="headlist1"><a href="#"><span th:text="${session.user.score}"></span></a></div>
+                <div class="headlist2"><a href="#">积分</a></div>
+            </div>
+            <div class="line"></div>
+            <!--保修卡-->
+            <div class="warrantycard">
+                <div class="headlist1"><a href="/ecardList">查看</a></div>
+                <div class="headlist2"><a href="/ecardList">保修卡</a></div>
+            </div>
+            <div class="line"></div>
+            <!--优惠券-->
+            <div class="coupon">
+                <div class="headlist1"><a href="/ticketList" th:text="|${session.ticketCount}张|"></a></div>
+                <div class="headlist2"><a href="/ticketList">优惠券</a></div>
+            </div>
+        </div>
+    </div>
+    <!--页面主选项表-->
+    <div class="mianlist">
+        <div class="weui-cells_form">
+            <a class="weui-cell weui-cell_access" href="/deviceList?type=1">
+                <img src="/image/mydata/9.png"  class="mianimg"/>
+                <div class="weui-cell__bd" id="datalink">
+                    <p>我的设备</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="/myOrder">
+                <img src="/image/mydata/10.png"  class="mianimg"/>
+                <div class="weui-cell__bd">
+                    <p>我的订单</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+        </div>
+    </div>
+    <!--BEGIN dialog积分-->
+    <div th:if="${session.user.giveScore} == 0" class="js_dialog" id="iosDialog2">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">
+                <img src="/image/myequipmentdetail/8.png" style="width: 1.72rem;height: 1.72rem;"/>
+                <div style="font-size: 0.3rem;color: #999999;">获得了<span style="color: #f8b551;font-size: 0.4rem; font-weight: bold;">50</span>积分</div></div>
+            <div class="weui-dialog__ft">
+                <a id="sure" href="#" class="weui-dialog__btn" style="background: #E64340; color: #FFFFFF">确定</a>
+            </div>
+        </div>
+    </div>
+    <!--END dialog积分-->
+</div>
+<script src="/js/mydataregistered.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.FixMapper">	
+	<resultMap type="com.nfet.icare.pojo.Fix" id="FixResultMap">
+		<id column="uid" property="uid"/>
+		<result column="order_time" property="orderTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+		<association column="device_no" property="deviceNo" javaType="com.nfet.icare.pojo.DeviceInfo">
+			<id column="uid" property="uid"/>
+			<result column="device_no" property="deviceNo"/>
+		</association>
+	</resultMap>
+
+	<resultMap type="com.nfet.icare.pojo.Mgr_Fix" id="Mgr_FixResultMap">
+		<id column="uid" property="uid"/>
+		<result column="fix_id" property="fixId"/>
+		<result column="user_no" property="userNo"/>
+		<result column="user_phone" property="userPhone"/>
+		<result column="company_name" property="companyName"/>
+		<result column="company_phone" property="companyPhone"/>
+		<result column="company_industry" property="companyIndustry"/>
+		<result column="fault_name" property="faultName"/>
+		<result column="fix_desc" property="fixDesc"/>
+		<result column="fix_pattern" property="fixPattern"/>
+		<result column="address" property="address"/>
+		<result column="fix_schedule" property="fixSchedule"/>
+		<result column="evaluate" property="evaluate"/>
+		<result column="order_time" property="orderTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+		<association column="device_no" property="deviceNo" javaType="com.nfet.icare.pojo.DeviceInfo">
+			<id column="uid" property="uid"/>
+			<result column="device_no" property="deviceNo"/>
+		</association>
+		<association column="province_id" property="province" javaType="com.nfet.icare.pojo.Province">
+			<id column="uid" property="uid"/>
+			<result column="province_name" property="provinceName"/>
+		</association>
+		<association column="city_id" property="city" javaType="com.nfet.icare.pojo.City">
+			<id column="uid" property="uid"/>
+			<result column="city_name" property="cityName"/>
+		</association>
+		<association column="area_id" property="area" javaType="com.nfet.icare.pojo.Area">
+			<id column="uid" property="uid"/>
+			<result column="area_name" property="areaName"/>
+		</association>
+	</resultMap>	
+	
+	<!-- 报修记录 -->
+	<sql id="fixInfo">
+		order_time,conf_device_info.device_no
+	</sql>
+	
+	<!-- 故障数量 -->
+	<sql id="faultCount">
+		fault_name name,count(fault_name) value
+	</sql>
+	
+	<!-- 机型数量 -->
+	<sql id="deviceCount">
+		conf_device_info.type name,count(conf_device_info.type) value
+	</sql>
+	
+	<!-- 七日前报修数量 -->
+	<sql id="sevenCount">
+		count(*)
+	</sql>
+	
+	<!-- 设备报修订单 -->
+	<sql id="deviceFix">
+		df.fix_id,df.device_no,fault_name,fix_desc,fix_pattern,fix_schedule,
+		order_time,address,evaluate_device evaluate,cp.province_name,
+		cc.city_name,ca.area_name
+	</sql>
+	
+	<!-- 客户报修订单 -->
+	<sql id="allFixes">
+		df.fix_id,device_no,df.order_time,df.user_no,df.user_phone,df.company_name,
+		df.company_phone,df.company_industry,df.fault_name,df.fix_desc,df.fix_pattern,
+		cp.province_name,cc.city_name,ca.area_name,df.address,df.fix_schedule
+	</sql>
+	
+	<!-- 查询所有报修记录 -->
+	<select id="fixList" resultMap="FixResultMap">
+		SELECT 
+		<include refid="fixInfo" />
+		FROM data_fix
+		LEFT JOIN conf_device_info
+		ON data_fix.device_no = conf_device_info.device_no
+	</select>
+	
+	<!-- 查询故障数量 -->
+	<select id="faultCounts" resultType="com.nfet.icare.pojo.FaultCount">
+		SELECT
+		<include refid="faultCount" />
+		FROM data_fix 
+		GROUP BY fault_name 
+		ORDER BY count(fault_name) desc
+	</select>
+	
+	<!-- 查询设备型号数量 -->
+	<select id="deviceCounts" resultType="com.nfet.icare.pojo.DeviceCount">
+		SELECT 
+		<include refid="deviceCount" />
+		FROM data_fix
+		LEFT JOIN conf_device_info
+		ON data_fix.device_no = conf_device_info.device_no
+		GROUP BY conf_device_info.type
+		ORDER BY count(conf_device_info.type) desc
+	</select>
+	
+	<!-- 七日前报修数量 -->
+	<select id="sevenCounts" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT 
+		<include refid="sevenCount" />
+		FROM data_fix
+		<where>
+			order_time &lt; #{date}
+		</where>
+	</select>
+	
+	<!-- 设备报修订单 -->
+	<select id="deviceFixes" parameterType="java.lang.String" resultMap="Mgr_FixResultMap">
+		SELECT
+		<include refid="deviceFix" />
+		FROM data_fix df
+		LEFT JOIN data_evaluate de
+		ON df.fix_id = de.fix_no
+		LEFT JOIN conf_province cp
+		ON df.province_id = cp.province_id
+		LEFT JOIN conf_city cc
+		ON df.city_id = cc.city_id
+		LEFT JOIN conf_area ca
+		ON df.area_id = ca.area_id
+		<where>
+			df.device_no = #{deviceNo}
+		</where>		
+	</select>
+	
+	<!-- 客户报修订单 -->
+	<select id="allFixOrder" resultMap="Mgr_FixResultMap">
+		SELECT 
+		<include refid="allFixes" />
+		FROM data_fix df
+		LEFT JOIN conf_province cp
+		ON df.province_id = cp.province_id
+		LEFT JOIN conf_city cc
+		ON df.city_id = cc.city_id
+		LEFT JOIN conf_area ca
+		ON df.area_id = ca.area_id
+		ORDER BY df.order_time desc
+	</select>
+</mapper>

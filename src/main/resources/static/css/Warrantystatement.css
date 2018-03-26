@@ -1,0 +1,23 @@
+.main{
+    margin-top: 1.1rem;
+    margin-left: 0.2rem;
+    color: #404040;
+}
+h1{
+    font-size: 0.36rem;
+}
+
+h2{
+    font-size: 0.32rem;
+    margin-top: 0.66rem;
+}
+
+h3{
+    font-size: 0.3rem;
+    margin-top: 0.4rem;
+}
+
+.text{
+    margin-top: 0.68rem;
+    font-size: 0.28rem;
+}

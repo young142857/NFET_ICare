@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>延保订单_已完成</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/deferredorder.css"/>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--页面顶部，产品图片部分-->
+    <div class="header">
+        <div class="headbox">
+            <div class="items">
+                <div class="headimg">
+                    <img th:src="@{${warranty.deviceNo.image}+'_02.png'}" style="width: 1.87rem;height: 1.86rem;"/>
+                </div>
+                <div class="namecode">
+                    <div class="name"><span th:text="${warranty.deviceNo.type}"></span></div>
+                    <div class="code">
+                        <span class="codesp1">设备编码：</span><span th:text="${warranty.deviceNo.deviceNo}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="server"></div>
+        </div>
+    </div>
+    <!--页面主体，产品订单信息-->
+    <div class="main">
+        <div class="mainbox">
+            <ul class="mainlist">
+                <li class="item_1">
+                    <span th:if="${warranty.warrantyPkgNo} != null" class="item_sp1" th:text="${warranty.warrantyPkgNo.warrantyPkgContent}"></span>
+                    <span th:if="${warranty.warrantyPkgNo} == null" class="item_sp1" th:text="${warranty.warrantyVisitNo.warrantyPkgContent}"></span>
+                    <span class="item_sp3">已完成</span></li>
+                <li class="item_2"><span>延保人：</span><span th:text="${warranty.userNo.name}"></span></li>
+                <li class="item_2" th:if="${warranty.warrantyPkgNo} != null" th:switch="${warranty.warrantyPkgNo.warrantyPkgPeriod}">
+                    <span>延保期限：</span>
+                    <span th:case="1">12个月</span>
+                    <span th:case="2">24个月</span>
+                    <span th:case="3">36个月</span>
+                    <span th:case="4">48个月</span>
+                    <span th:case="5">60个月</span>
+                </li>
+                <li class="item_2"><span>延保期：</span>
+                    <span th:text="${warranty.warrantyFrom}"></span>-<span th:text="${warranty.warrantyTo}"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="mainboxs">
+            <ul>
+                <li class="item_3"><span>延保金额：</span><span th:text="|&yen;${warranty.payAmt}|"></span></li>
+                <li class="item_4"><span>优惠券：</span><span>-&yen;0</span></li>
+                <li class="item_5"><span class="item_sp1">实付金额：</span><span class="item_sp2" th:text="|&yen;${warranty.payAmt}|"></span></li>
+                <li class="item_6"><span>订单编号：</span><span th:text="${warranty.warrantyNo}"></span></li>
+                <li class="item_6"><span>下单时间：</span><span th:text="${warranty.orderTimeStr}"></span></li>
+                <!--<li class="item_6"><span>下单时间:</span><span>2017年05月01日</span></li>-->
+            </ul>
+        </div>
+    </div>
+    <!--页面底部按钮-->
+    <div class="foot">
+            <div class="btn1">
+            </div>
+            <div class="btn2"><a href="estimate.html">评价</a>
+			</div>
+    </div>
+	<!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+</body>
+</html>

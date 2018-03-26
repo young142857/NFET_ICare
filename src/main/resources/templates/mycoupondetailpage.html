@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>设备延保券</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/mycoupondetailpage.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--页面顶部主体图-->
+    <div class="main">
+        <div class="itemboxs">
+            <div class="item1">延保券</div>
+            <div class="item2"><img src="/image/mycoupon/1.png" style="width: 1.14rem;height:1.14rem;"/></div>
+            <div class="item3"><span class="cardnum">券号 </span><span th:text="${ticket.ticketNo}"></span></div>
+            <a href="#" class="weui-btn weui-btn_plain-primary item4">立即使用</a>
+            <div class="item5">延保期限：<span th:text="|${ticket.period}个月|"></span></div>
+            <div class="item6"><span class="sp1">设备编码：</span><span class="sp2" th:text="${ticket.deviceNo}"></span></div>
+            <div class="item7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;立即使用后，给该设备延长三个月的保修时间；若已过保，则延保时间即从用券当天算起。</div>
+        </div>
+    </div>
+    <!--页面中部二维码-->
+    <div class="middle">
+        <div class="qrcode"><img src="/image/mycoupondetailpage/1.png" style="width:3rem;height: 3rem;"/></div>
+    </div>
+    <!--页脚-->
+    <div class="weui-footer footbox">
+        <p class="weui-footer__text">&copy;南京富士通电子信息科技股份有限公司</p>
+    </div>
+	  <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/mycoupondetailpage.js"></script>
+</body>
+</html>

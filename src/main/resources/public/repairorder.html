@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>填写报修单</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/repairorder.css">
+    <script src="js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="topbox">
+            <ul class="toplist">
+                <li class="imgli">
+                    <span class="imgsp">
+                        <img src="image/repairorder/图标.png" style="width: 1.24rem;height: 1.24rem;">
+                    </span><span class="imgsp1">DKP&nbsp;23801</span>
+                </li>
+                <li class="textli">
+                    <div class="d1">
+                        <span class="textsp1">产品名称</span>
+                        <span class="textsp2">票据打印机</span>
+                    </div>
+                    <div class="d2">
+                        <span class="textsp1">产品编号</span>
+                        <span class="textsp2">VIN238413413415</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="shadow"><img src="image/repairorder/背景填充.png" style="height: 0.1rem"></div>
+    </div>
+    <div class="main">
+        <div class="mainbox">
+            <span>填写故障信息</span>
+        </div>
+        <div class="weui-cells cells">
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                <label class="weui-label pstyle">故障类型</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select pstyle" name="select2">
+                        <option value="1">线断了</option>
+                        <option value="2">打不出来</option>
+                        <option value="3">漏油</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label class="weui-label pstyle">所属行业</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select pstyle" name="select2">
+                        <option value="1">金融保险</option>
+                        <option value="2">医疗卫生</option>
+                        <option value="3">政府机关</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd">
+                <label class="weui-label pstyle">维修方式</label>
+            </div>
+            <div class="weui-cell__bd">
+                <select class="weui-select pstyle" name="select2">
+                    <option value="1">上门维修</option>
+                    <option value="2">送厂维修</option>
+                </select>
+            </div>
+        </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label class="weui-label pstyle">上门地址</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select pstyle" name="select2">
+                        <option value="1">江苏</option>
+                        <option value="2">浙江</option>
+                        <option value="2">上海</option>
+                    </select>
+                </div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select pstyle" name="select2">
+                        <option value="1">南京</option>
+                        <option value="2">杭州</option>
+                        <option value="2">上海</option>
+                    </select>
+                </div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select pstyle" name="select2">
+                        <option value="1">栖霞区</option>
+                        <option value="2">秦淮区</option>
+                        <option value="2">建邺区</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label pstyle">详细地址</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input pstyle" type="text"  placeholder="请输入详细地址">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="foot">
+        <div class="footbox"><span class="pstyle">详细描述您遇到的问题</span></div>
+        <div class="weui-cells weui-cells_form cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea pstyle" placeholder="请输入文本" rows="1"></textarea>
+                    <div class="weui-textarea-counter areastyle">40字以内</div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells submitbt">
+            <a href="fixsuccess.html" class="weui-btn weui-btn_warn">提交</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

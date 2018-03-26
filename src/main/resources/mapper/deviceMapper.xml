@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.DeviceMapper">
+	<resultMap type="com.nfet.icare.pojo.Device" id="DeviceResultMap">
+		<id column="uid" property="uid"/>
+		<result column="user_no" property="userNo"/>
+		<result column="bind_time" property="bindTime" 
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="ecard_no" property="ecardNo"/>
+		<result column="warrant_period" property="warrantPeriod"/>
+		<result column="warrant_from" property="warrantFrom"/>
+		<result column="warrant_to" property="warrantTo"/>
+		<result column="visit_to" property="visitTo"/>
+		<result column="warrant_status" property="warrantStatus"/>
+		<result column="status" property="status"/>
+		<result column="create_time" property="createTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+		<association column="device_no" property="deviceNo" javaType="com.nfet.icare.pojo.DeviceInfo">
+			<id column="uid" property="uid"/>
+			<result column="device_no" property="deviceNo"/>
+			<result column="name" property="name"/>
+			<result column="type" property="type"/>
+			<result column="model" property="model"/>
+			<result column="image" property="image"/>
+			<result column="mfg_date" property="mfgDate"/>
+			<result column="create_time" property="createTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="last_modify_time" property="lastModifyTime"
+				javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+			<result column="delete_flag" property="deleteFlag"/>
+		</association>
+	</resultMap> 
+	
+	<resultMap type="com.nfet.icare.pojo.DeviceColumn" id="DeviceColumnResultMap">
+		<id column="uid" property="uid"/>
+		<result column="device_type" property="deviceType"/>
+		<result column="warranty_type" property="warrantyType"/>
+		<result column="first_id" property="firstId"/>
+		<result column="second_id" property="secondId"/>
+		<result column="third_id" property="thirdId"/>
+		<result column="create_time" property="createTime"
+		javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+	</resultMap>
+	
+	<resultMap type="com.nfet.icare.pojo.DeviceInfo" id="DeviceInfoResultMap">
+		<id column="uid" property="uid"/>
+		<result column="device_no" property="deviceNo"/>
+		<result column="name" property="name"/>
+		<result column="type" property="type"/>
+		<result column="model" property="model"/>
+		<result column="image" property="image"/>
+		<result column="mfg_date" property="mfgDate"/>
+		<result column="create_time" property="createTime"
+		javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="last_modify_time" property="lastModifyTime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+		<result column="delete_flag" property="deleteFlag"/>
+	</resultMap>
+	
+	<resultMap type="com.nfet.icare.pojo.CacheInfo" id="AllDeviceBindMap">
+		<result column="device_no" property="key"/>
+		<result column="user_no" property="value"/>
+	</resultMap>
+	
+	<!-- 查询设备信息 -->
+	<sql id="device_cache_info">		
+		conf_device_info.device_no,conf_device_info.mfg_date,data_device.user_no
+	</sql> 
+	
+	<!-- 查询设备信息 -->
+	<select id="getDeviceBindInfo" resultMap="AllDeviceBindMap">
+		SELECT 
+		<include refid="device_cache_info" />
+		FROM conf_device_info  
+		LEFT JOIN data_device 
+		ON data_device.device_no = conf_device_info.device_no
+	</select>
+	
+	<sql id="device_deviceInfo">
+		data_device.device_no,conf_device_info.model,conf_device_info.type,conf_device_info.image,
+		ecard_no,bind_time,warrant_to,warrant_period,data_device.status
+	</sql>
+	
+	<sql id="deviceInfo_device_no">
+		device_no,mfg_date,model,image,name,type
+	</sql>	
+	
+	<!-- 查找设备是否已注册 -->
+	<sql id="device_device_no">		
+		data_device.device_no,warrant_to,visit_to,warrant_status,user_no,ecard_no,conf_device_info.image,
+		warrant_from,conf_device_info.model,conf_device_info.name,conf_device_info.type,status
+	</sql>
+	
+	<!-- 根据设备型号查询设备行数 -->
+	<sql id="device_column">
+		device_type,warranty_type,first_id,second_id,third_id
+	</sql>
+	
+	<!-- 根据设备型号查询设备行数 -->
+	<select id="deviceColumn" resultMap="DeviceColumnResultMap" parameterType="java.lang.String">
+		SELECT 
+		<include refid="device_column" />
+		FROM conf_device_column 
+		<where>
+			device_type = #{deviceType}	
+		</where> 	
+	</select>
+	
+	<!-- 查找用户设备列表 -->
+	<select id="deviceList" resultMap="DeviceResultMap" parameterType="java.util.Map">
+		SELECT 
+		<include refid="device_deviceInfo" />
+		FROM data_device 
+		LEFT JOIN conf_device_info 
+		ON data_device.device_no = conf_device_info.device_no
+		LEFT JOIN data_user 
+		ON data_user.user_no = data_device.user_no
+		WHERE data_user.user_no = #{map.userNo}
+		ORDER BY ${map.order} desc		
+	</select>
+	
+	<!-- 查找设备是否存在 -->
+	<select id="existDevice" parameterType="java.lang.String" resultMap="DeviceInfoResultMap">
+		SELECT
+		<include refid="deviceInfo_device_no" />
+		FROM conf_device_info 
+		WHERE device_no = #{deviceNo}
+	</select>
+	
+	<!-- 查找设备是否已注册 -->
+	<select id="bindOrNot" parameterType="java.lang.String" resultMap="DeviceResultMap">
+		SELECT
+		<include refid="device_device_no" />
+		FROM data_device
+		LEFT JOIN conf_device_info 
+		ON data_device.device_no = conf_device_info.device_no
+		WHERE data_device.device_no = #{deviceNo}
+	</select>
+	
+	<!-- 用户注册设备  -->
+	<insert id="bindSingleDevice" parameterType="com.nfet.icare.pojo.Device">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        
+		INSERT INTO data_device
+		(uid,user_no,device_no,bind_time,ecard_no,warrant_period,
+		warrant_from,warrant_to,warrant_status,create_time,last_modify_time) 
+		VALUES
+		(#{uid,jdbcType=VARCHAR},#{device.userNo},#{device.deviceNo.deviceNo},#{device.bindTime},#{device.ecardNo},
+		#{device.warrantPeriod},#{device.warrantFrom},#{device.warrantTo},#{device.warrantStatus},
+		#{device.createTime},#{device.lastModifyTime})
+	</insert>
+	
+	<!-- 更改设备保修状态 -->
+	<update id="updateDeviceStatus" parameterType="com.nfet.icare.pojo.Device">
+		UPDATE data_device
+		<set>
+			<if test="device.warrantStatus != null and device.warrantStatus != ''">
+				warrant_status = #{device.warrantStatus},
+			</if>
+			<if test="device.lastModifyTime != null">
+				last_modify_time = #{device.lastModifyTime}
+			</if>
+		</set>
+		<where>
+			device_no = #{device.deviceNo.deviceNo}
+		</where>
+	</update>
+	
+	<!-- 更改设备状态 -->
+	<update id="updateStatus" parameterType="java.util.Map">
+		UPDATE data_device
+		<set>
+			<if test="map.status != null and map.status != ''">
+				status = #{map.status},
+			</if>
+			<if test="map.lastModifyTime != null">
+				last_modify_time = #{map.lastModifyTime}
+			</if>
+		</set>
+		<where>
+			device_no = #{map.deviceNo}
+		</where>
+	</update>
+	
+	<!-- 使用延保券 -->
+	<update id="useTicket" parameterType="java.util.Map">
+		UPDATE data_device
+		<set>
+			<if test="map.warrantyTo != null and map.warrantyTo != ''">
+				warrant_to = #{map.warrantyTo},
+			</if>
+			<if test="map.period != null and map.period != ''">
+				warrant_period = #{map.period},
+			</if>
+			<if test="map.lastModifyTime != null">
+				last_modify_time = #{map.lastModifyTime},
+			</if>
+		</set>
+		<where>
+			device_no = #{map.deviceNo}
+		</where>
+	</update>
+</mapper>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>报修订单</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/deferredorder.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="headbox">
+            <div class="items">
+                <div class="headimg">
+                    <img th:src="@{${fix.deviceNo.image}+'_02.png'}" style="width: 1.87rem;height: 1.86rem;"/>
+                </div>
+                <div class="namecode">
+                    <div class="name"><span th:text="${fix.deviceNo.type}"></span></div>
+                    <div class="code">
+                        <span class="codesp1">设备编码：</span><span id="deviceNo" th:text="${fix.deviceNo.deviceNo}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="server"></div>
+        </div>
+    </div>
+        <div class="status">
+            <div class="text">
+                <div th:if="${fix.fixSchedule} == 1" class="success">报修成功</div>
+                <div th:if="${fix.fixSchedule} == 2" class="success">客服确认</div>
+                <div th:if="${fix.fixSchedule} == 3" class="success">维修中</div>
+                <div th:if="${fix.fixSchedule} == 4" class="success">维修完成</div>
+                <div class="thank">感谢您对富士通的信任！</div>
+            </div>
+            <div class="arrow">
+                <img src="/image/defferredorder/4.png" style="width: 0.16rem;height: 0.26rem"/>
+            </div>
+        </div>
+    <div class="main">
+        <div class="mainbox">
+            <ul class="mainlist">
+                <li class="item_1">
+                	<span class="item_sp1">设备报修</span>
+                    <!-- <span class="item_sp2" th:case="1">报修成功</span>
+                    <span class="item_sp2" th:case="2">等待维修</span>
+                    <span class="item_sp2" th:case="3">维修中</span>
+                    <span class="item_sp2" th:case="4">维修完成</span> -->
+                </li>
+                <li class="item_2"><span>故障类型：</span>
+                    <span th:text="${fix.faultName}"></span>
+                </li>
+                <li class="item_2" th:switch="${fix.fixPattern}">
+                    <span>维修方式：</span>
+                    <span th:case="0">上门维修</span>
+                    <span th:case="1">自行送修</span>
+                </li>
+                <li class="item_7">
+                    <div><span>维修地址：</span>
+                        <span th:text="${fix.province.provinceName}"></span>
+                        <span th:text="${fix.city.cityName}"></span>
+                        <span th:if="${fix.area} != null" th:text="${fix.area.areaName}"></span>
+                        <span th:text="${fix.address}"></span>
+                    </div>
+                   <!-- <span><a href="#"><img src="/image/defferredorder/2.png" style="width: 1.24rem;height: 0.32rem;"/></a></span>-->
+                </li>
+            </ul>
+        </div>
+        <div class="item_6"><span>订单编号：</span><span id="fixId" th:text="${fix.fixId}"></span></div>
+        <div class="item_6"><span>下单时间：</span><span th:text="${fix.orderTimeStr}"></span></div>
+        <!--<div class="item_6"><span>下单时间:</span><span>2017年05月01日</span></div>-->
+    </div>
+    <div class="foot">
+        <div class="btn1">
+        </div>
+        <div class="donebtn"><a href="#">已评价</a></div>
+    </div>
+    <!-- loading toast -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p style="font-size: 0.3rem" class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!-- loading toast END-->
+</div>
+<script src="/js/fixover.js"></script>
+</body>
+</html>

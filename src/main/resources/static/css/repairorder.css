@@ -1,0 +1,101 @@
+body{
+    background: #F7F7F7;
+}
+
+.header{
+    height: 2.65rem;
+    background: #FFFFFF;
+}
+.toplist{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.imgli{
+    height: 1.68rem;
+    width: 6.9rem;
+    border-bottom: 0.01rem solid #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.imgsp{
+    width: 1.24rem;
+    height: 1.24rem;
+    border-radius: 0.1rem;
+}
+
+.imgsp1{
+    color: #404040;
+    font-size: 0.4rem;
+}
+.textli{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 6.9rem;
+    height: 0.97rem;
+}
+.textsp1{
+    color: #CCCCCC;
+}
+
+.textsp2{
+    font-size: 0.24rem;
+    color: #999999;
+    margin-left: 0.17rem;
+}
+
+.d1,.d2{
+    display: flex;
+}
+
+.shadow{
+    height: 0.1rem;
+    display: flex;
+}
+.mainstyle{
+    color:#404040;
+}
+.mainbox,.footbox{
+    color: #404040;
+    padding: 0.3rem;
+}
+.footbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cells{
+    margin-top: 0;
+}
+
+.submitbt {
+    margin: 0.5rem 0.2rem;
+    height: 0.94rem;
+}
+.submitbt>a{
+    font-size: 0.3rem;
+    height: 0.94rem;
+    padding-top: 0.1rem;
+}
+
+.areastyle,.cellstyle,.textsp1,.textsp2{
+    font-size: 0.24rem;
+}
+
+.cellstyle{
+    color:#E64340;
+}
+
+.addresslist{
+    display: none;
+}
+.mainbox,.footbox{
+    font-size: 0.28rem;
+}
+
+.problem{
+    color: #5d7097;
+}

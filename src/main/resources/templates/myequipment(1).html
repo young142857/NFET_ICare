@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>我的设备_注册成功</title>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/myequipment.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/fontsize.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!--页面导航条-->
+        <div class="weui-navbar">
+            <div id="btn1" class="weui-navbar__item">
+                产品类型
+            </div>
+            <div id="btn2" class="weui-navbar__item weui-bar__item_on">
+                设备编码
+            </div>
+            <div id="btn3" class="weui-navbar__item">
+                保修截止日期
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="equipmentbox" th:each="equipment,eqStat:${session.bindDeviceList1}" >
+           <div class="box_img">
+               <img src="/image/mycard/7.png" style="width: 1.58rem;height: 1.58rem;"/>
+           </div>
+           <div class="data_box">
+               <ul class="datalist">
+                   <li class="nameli">
+                       <div class="li_item">
+                           <span class="namesp1" th:text="${equipment.deviceNo.type}"></span>
+                           <span class="namesp2" th:text="${equipment.deviceNo.deviceNo }"></span>
+                       </div>
+                       <div class="arrowbox">
+                           <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                       </div>
+                   </li>
+                   <li class="timeli">
+                       <span class="timesp1">添加时间：</span>
+                       <span class="timesp1" th:text="${equipment.bindTimeStr}"></span>
+                   </li>
+                   <li class="timelis">
+                       <span class="timesp1">保修截止时间：</span>
+                       <span class="timesp1" th:text="${equipment.warrantTo}"></span>
+                   </li>
+                   <li class="btnli">
+                       <div class="btn1"><a href="onlinerepair.html">报修</a></div>
+                       <div class="btn2"><a href="onlineextendedwarranty.html">延保</a></div>
+                   </li>
+               </ul>
+           </div>
+       </div>
+    </div>
+    <div class="main_x">
+        <div class="equipmentbox" th:each="equipment,eqStat:${session.bindDeviceList2}" >
+           <div class="box_img">
+               <img src="/image/mycard/7.png" style="width: 1.58rem;height: 1.58rem;"/>
+           </div>
+           <div class="data_box">
+               <ul class="datalist">
+                   <li class="nameli">
+                       <div class="li_item">
+                           <span class="namesp1" th:text="${equipment.deviceNo.type}"></span>
+                           <span class="namesp2" th:text="${equipment.deviceNo.deviceNo }"></span>
+                       </div>
+                       <div class="arrowbox">
+                           <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                       </div>
+                   </li>
+                   <li class="timeli">
+                       <span class="timesp1">添加时间：</span>
+                       <span class="timesp1" th:text="${equipment.bindTimeStr}"></span>
+                   </li>
+                   <li class="timelis">
+                       <span class="timesp1">保修截止时间：</span>
+                       <span class="timesp1" th:text="${equipment.warrantTo}"></span>
+                   </li>
+                   <li class="btnli">
+                       <div class="btn1"><a href="onlinerepair.html">报修</a></div>
+                       <div class="btn2"><a href="onlineextendedwarranty.html">延保</a></div>
+                   </li>
+               </ul>
+           </div>
+       </div>
+    </div>
+	<div class="main_s">
+        <div class="equipmentbox" th:each="equipment,eqStat:${session.bindDeviceList3}" >
+           <div class="box_img">
+               <img src="/image/mycard/7.png" style="width: 1.58rem;height: 1.58rem;"/>
+           </div>
+           <div class="data_box">
+               <ul class="datalist">
+                   <li class="nameli">
+                       <div class="li_item">
+                           <span class="namesp1" th:text="${equipment.deviceNo.type}"></span>
+                           <span class="namesp2" th:text="${equipment.deviceNo.deviceNo }"></span>
+                       </div>
+                       <div class="arrowbox">
+                           <img src="/image/scan/3.png" style="width: 0.16rem;height: 0.25rem;"/>
+                       </div>
+                   </li>
+                   <li class="timeli">
+                       <span class="timesp1">添加时间：</span>
+                       <span class="timesp1" th:text="${equipment.bindTimeStr}"></span>
+                   </li>
+                   <li class="timelis">
+                       <span class="timesp1">保修截止时间：</span>
+                       <span class="timesp1" th:text="${equipment.warrantTo}"></span>
+                   </li>
+                   <li class="btnli">
+                       <div class="btn1"><a href="onlinerepair.html">报修</a></div>
+                       <div class="btn2"><a href="onlineextendedwarranty.html">延保</a></div>
+                   </li>
+               </ul>
+           </div>
+       </div>
+    </div>
+    <!--BEGIN dialog立即延保券-->
+    <div class="js_dialog" id="iosDialog2" th:if="${session.status} == 0 and ${session.count} != 0">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__hd hd"><strong class="weui-dialog__title">延保券</strong></div>
+            <div class="weui-dialog__bd">
+                <div style=" font-weight:bold;font-size: 0.26rem;color: #999999;display: flex;justify-content: space-between; padding: 0 0.7rem 0 0.5rem;"><span>延保时间</span><span>张数</span></div>
+                <div style="font-size: 0.3rem;color: #404040;margin-top: 0.1rem; margin-bottom: 0.36rem;display: flex;justify-content: space-between;padding: 0 0.78rem 0 0.6rem;"><span>三个月</span><span id="count" th:text="${session.count}"></span></div>
+                <!--<div style="font-size: 0.2rem;color: #CCCCCC; margin-bottom: 0.27rem;">延长所有扫描/输入设备的延保期</div>-->
+            </div>
+            <div class="weui-dialog__ft">
+                <a id="now" href="#" class="weui-dialog__btn">立即领取</a>
+            </div>
+        </div>
+    </div>
+    <!--END dialog立即延保券-->
+</div>
+
+<script src="/js/myequipment.js"></script>
+</body>
+</html>

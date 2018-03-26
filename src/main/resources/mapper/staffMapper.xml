@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nfet.icare.dao.StaffMapper">
+	<resultMap type="com.nfet.icare.pojo.Staff" id="StaffResultMap">
+		<id column="uid" property="uid"/>
+		<result column="staff_no" property="staffNo"/>		
+		<result column="password" property="password"/>
+		<result column="staff_name" property="staffName"/>
+		<result column="staff_image" property="staffImage"/>
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="last_modify_time" property="lastModifyTime"
+			jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		<result column="delete_flag" property="deleteFlag" />
+		<association column="role_id" property="role" javaType="com.nfet.icare.pojo.Role">
+			<id column="uid" property="uid"/>
+			<result column="role_id" property="roleId"/>
+			<result column="create_time" property="createTime" jdbcType="TIMESTAMP"
+				javaType="java.sql.Timestamp" />
+			<result column="last_modify_time" property="lastModifyTime"
+				jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
+		</association>
+	</resultMap>
+	
+	<sql id="staffInfo">
+		staff_no,password,staff_name,staff_image,role_id
+	</sql>
+	
+	<select id="queryStaff" parameterType="java.lang.String" resultMap="StaffResultMap">
+		SELECT 
+		<include refid="staffInfo" />
+		FROM data_staff
+		<where>
+			staff_no = #{staffNo}
+		</where>
+	</select>
+</mapper>

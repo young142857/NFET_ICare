@@ -1,0 +1,41 @@
+body{
+    background: #F7F7F7;
+}
+
+.weui-navbar{
+    position: static;
+}
+
+.one,.onex,.main_img{
+    background: #FFFFFF;
+}
+
+.main_img{
+    width: 7.5rem;
+    height: 2.55rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main_img>img{
+    display: flex;
+}
+.more{
+    display: none;
+}
+.cellsbox{
+    margin-top: 0;
+}
+.zhucebt{
+    margin: 0.5rem 0.2rem 0;
+}
+.arrow{
+    width: 0.15rem;
+    height: 0.25rem;
+    display: flex;
+    margin: 0.3rem auto;
+    background: #F7F7F7;
+}
+.inputlength{
+    width:6rem;
+}

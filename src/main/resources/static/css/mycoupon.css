@@ -1,0 +1,90 @@
+body{
+    background: #F7F7F7;
+}
+.header{
+    height: 0.94rem;
+    z-index: 0;
+}
+.coupon,.deferred{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main_coupon{
+    display: none;
+}
+.couponbox1,.couponbox2,.deferredbox1,.deferredbox2{
+    width: 7.1rem;
+    height: 2.3rem;
+    margin-top: 0.1rem;
+    border-radius: 0.1rem;
+    display: flex;
+    flex-direction: column;
+
+}
+.couponbox1,.deferredbox1{
+    background: #f0f0f0;
+}
+.couponbox2,.deferredbox2{
+    background: #ffffff;
+}
+.couponoffer,.deferredoffer{
+    width: 5.9rem;
+    display: flex;
+}
+
+.couponimg,.couponimg>img,.deferredimg,.deferredimg>img{
+    width: 1.14rem;
+    height: 1.14rem;
+}
+.couponimg,.couponitem,.deferredimg,.deferreditem{
+    margin-top: 0.3rem;
+
+}
+.couponitem,.deferreditem{
+    margin-right: 0.8rem;
+}
+.couponimg,.deferredimg{
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+.item1,.deferreditem1{
+    font-size: 0.26rem;
+    color:#666666;
+}
+
+.item2,.deferreditem2{
+    width: 3.4rem;
+    font-size: 0.34rem;
+    color:#343434;
+    margin-top: 0.21rem;
+}
+
+.icon{
+    width: 0.9rem;
+    height: 0.42rem;
+    display: flex;
+    margin-top: 0.3rem;
+}
+.expirydate{
+    font-size: 0.24rem;
+    color:#9b9b9b;
+    width: 5.38rem;
+    align-self:flex-end;
+    border-top:0.01rem dashed #D1D1D1;
+    margin-top: 0.2rem;
+}
+
+.expirydate>p{
+    margin-top: 0.2rem;
+}
+
+.msgstyle{
+    color:#999999;
+    font-size: 0.26rem;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 4.8rem;
+}

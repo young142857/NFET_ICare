@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>常见问题列表</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/problemlist.css">
+    <script src="js/fontsize.js"></script>
+    <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>搜索</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="weui-cells">
+                <div class="weui-cell choose">
+                    <p>选择问题</p>
+                </div>
+            <a class="weui-cell weui-cell_access" href="#">
+                <div class="weui-cell__bd">
+                    <p class="probp">问题一 要不要在前面加序号</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="#">
+                <div class="weui-cell__bd">
+                    <p class="probp">问题二 要不要在前面加序号</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="#">
+                <div class="weui-cell__bd">
+                    <p class="probp">问题三 要不要在前面加序号</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+        <!--按钮-->
+        <div class="btn">
+            <a href="javascript:;" class="weui-btn weui-btn_primary">返回上一步</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

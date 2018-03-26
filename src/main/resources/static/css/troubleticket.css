@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 0.14rem;
+}
+#container{
+    width: 100%;
+}
+
+.troublebox{
+    width:3.2rem;
+    margin: 0 auto;
+    height: 2.4rem;
+}
+.lablebox{
+    width:1.2rem;
+}
+
+#radio_box{
+    width:3.2rem;
+    height: 0.4rem;
+    margin: 0 auto;;
+}
+
+/*.ptbox{*/
+    /*width: 3.6rem;*/
+/*}*/
+.radiobt {
+    font-size: 0.18rem;
+    font-family: 'ArialMT', 'Arial';
+    float: left;
+    margin-right:0.5rem;
+
+}
+.address1,.address2,.ttarebox{
+    width: 3.2rem;
+    margin-bottom:0.4rem;
+    float: left;
+}
+
+.adrbox{
+    margin-top: 0.1rem;;
+}
+.adrpt{
+    text-align: center;
+}
+.address2{
+    display: none;
+}
