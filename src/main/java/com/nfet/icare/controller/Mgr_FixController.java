@@ -127,8 +127,8 @@ public class Mgr_FixController {
 	@ResponseBody
 	public List<Mgr_Fix> allFixOrder() throws ParseException{
 		List<Mgr_Fix> allFixOrder = new ArrayList<>();
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		
 		int num = 1;
 		allFixOrder = fixServiceImpl.allFixOrder();
